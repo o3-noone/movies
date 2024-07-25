@@ -9,21 +9,22 @@ function App() {
   const [count, setCount] = useState(1);
 
   const fetchData = async () => {
+    let combinedResults = [];
+
     try {
-      // Fetch data from page 1 and page 2
-      const response1 = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=1`);
-      const response2 = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=2`);
-      const data1 = await response1.json();
-      const data2 = await response2.json();
-      
-      // Combine the results from both pages
-      const combinedResults = [...data1.results, ...data2.results].slice(0, 36); // Limit to 36 items
-      setData(combinedResults);
+      for (let page = 1; page <= 2; page++) {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`);
+        const data = await response.json();
+        combinedResults = [...combinedResults, ...data.results];
+
+        await new Promise(resolve => setTimeout(resolve, 200)); 
+      }
+
+      setData(combinedResults.slice(0, 36));
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-
   useEffect(() => {
     fetchData();
   }, []);
