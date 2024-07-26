@@ -48,25 +48,8 @@ const Questions = () => {
                     </div>
                     
                 </li>
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                         03
-                        </div>
-                        <h4>What content is available on StreamVibe? </h4>
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                </li>
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                         07
-                        </div>
-                        <h4>How do I contact StreamVibe customer support?</h4>
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                    
-                </li>
+               
+             
                 <li className="question-item">
                     <div className="question-top">
                         <div className="question-icon">
@@ -76,16 +59,7 @@ const Questions = () => {
                         <i class="fa-solid fa-plus"></i>
                     </div>
                 </li>
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                         08
-                        </div>
-                        <h4>What are the StreamVibe payment methods? </h4>
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                    
-                </li>
+              
             </ul>
         </div>
     )
