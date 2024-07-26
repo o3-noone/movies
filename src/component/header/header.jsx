@@ -50,6 +50,9 @@ const Header = ({ count, setCount }) => {
                     </NavLink>
                 </li>
             </ul>
+            <div className="h-burger">
+            <i className="fa-solid fa-bars-staggered"></i>
+            </div>
             <div className="h-btns">
                 <button><i className="fa-solid fa-magnifying-glass"></i></button>
                 <button><i className="fa-regular fa-bell"></i></button>
