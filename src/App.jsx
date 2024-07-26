@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Home from './component/Home/home';
 import Header from './component/header/header';
+import Footer from './component/Footer/footer';
 
 function App() {
   const key = "46ec25609ba3e9b8903dc225769a8f80";
@@ -33,6 +34,7 @@ function App() {
     <div className="container">
       <Header count={count} setCount={setCount} />
       <Home data={data} />
+      <Footer/>
     </div>
   );
 }
