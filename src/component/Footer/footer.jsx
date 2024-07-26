@@ -48,6 +48,11 @@ const Footer = () => {
         </ul>
         <div className="footerB">
             <p>@2023 streamvib, All Rights Reserved</p>
+            <div className="footerB-list">
+                <Link to={"/"}>Terms of Use</Link>
+                <Link to={"/"}>Privacy Policy</Link>
+                <Link to={"/"}>Cookie Policy</Link>
+            </div>
         </div>
     </div>
   )

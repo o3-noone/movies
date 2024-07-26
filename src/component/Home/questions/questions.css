@@ -43,7 +43,8 @@
 }
 
 .question-item {
-    min-width: 700px;
+    max-width: 1000px;
+    width: 100%;
     min-height: 100px;
     padding: 15px;
     color: white;
@@ -66,12 +67,14 @@
 }
 .question-top>h4 {
     width: 500px;
+    width: 100%;
+    min-width: 350px;
     margin: 0;
     margin-left: 20px;
 }
 
 .question-icon {
-    width: 60px;
+    min-width: 60px;
     height: 60px;
     display: flex;
     align-items: center;

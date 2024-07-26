@@ -30,7 +30,7 @@
 
 .category-item {
     position: relative;
-    min-width: 240px;
+    /* min-width: 240px; */
     max-width: 240px;
     height: 282px;
     background-color: rgb(16, 16, 16);
