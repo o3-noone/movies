@@ -251,7 +251,19 @@
         width: 200px;
         min-width: 200px;
     }
- 
+ .footerB{
+    flex-direction: column;
+ }
+ .footerB>p{
+    width: 100%;
+    text-align: center;
+ }
+ .footerB-list{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: 10px;
+ }
 }
 
 @media (max-width: 430px) {
