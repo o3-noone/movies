@@ -40,9 +40,9 @@ const Footer = () => {
             <li className="footer-item">
                 <Link to={"/"}>Connect With Us</Link>
                 <div className="icon-footer">
-                    <div className="iconf"><Link><i class="fa-brands fa-facebook-f"></i></Link></div>
-                    <div className="iconf"><Link><i class="fa-brands fa-twitter"></i></Link></div>
-                    <div className="iconf"><Link><i class="fa-brands fa-linkedin"></i></Link></div>
+                    <div className="iconf"><Link><i className="fa-brands fa-facebook-f"></i></Link></div>
+                    <div className="iconf"><Link><i className="fa-brands fa-twitter"></i></Link></div>
+                    <div className="iconf"><Link><i className="fa-brands fa-linkedin"></i></Link></div>
                 </div>
             </li>
         </ul>

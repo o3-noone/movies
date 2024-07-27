@@ -44,7 +44,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 14px;
-
+    
 }
 
 .category-imgs>img {
@@ -52,6 +52,7 @@
     border-radius: 7px;
     object-fit: cover;
     height: 45%;
+    
 }
 
 .category-imgs>p {

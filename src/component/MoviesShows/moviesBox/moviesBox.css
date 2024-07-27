@@ -1,0 +1,59 @@
+.moviesBox{
+    width: 100%;
+    min-height: 500px;
+    border-radius: 15px;
+    border: 1px solid #393939;
+    padding: 0 25px;
+    margin: 100px 0;
+    position: relative;
+}
+.title{
+    padding: 7px 15px;
+    background-color: red;
+    position: absolute;
+    color: white;
+    top: -15px;
+    border-radius: 5px;
+}
+.moviesTitle{
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.moviesTitle>h4{
+    color: white;
+    margin: 0;
+    font-size: 30px;
+}
+.dots-movie{
+    width: 210px;
+    height: 50px;
+    background-color: black;
+    border: 2px solid rgb(40, 40, 40);
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 7px;
+    margin: 0;
+}
+.dots-movie>button {
+    width: 37px;
+    height: 37px;
+    background-color: rgb(33, 33, 33);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+}
+
+.dots-movie>button:first-child {
+    margin-left: 0;
+}
+
+.dots-movie>button:last-child {
+    margin-right: 0;
+}

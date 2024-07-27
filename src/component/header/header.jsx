@@ -4,13 +4,16 @@ import logo from './Logo.svg';
 import { Link, NavLink } from 'react-router-dom';
 
 const Header = ({ count, setCount }) => {
+    
     return (
         <div className='header p4'>
             <div className="h-logo">
                 <NavLink
                     to="/"
-                    onClick={() => setCount(1)}
-
+                    onClick={() => {
+                        setCount(1);
+                        localStorage.setItem("headerId", 1);
+                    }}
                 >
                     <img src={logo} alt="logo" />
                 </NavLink>
@@ -19,8 +22,10 @@ const Header = ({ count, setCount }) => {
                 <li className={`h-item ${count === 1 ? "h-active" : ""}`}>
                     <NavLink
                         to="/"
-                        onClick={() => setCount(1)}
-
+                        onClick={() => {
+                            setCount(1);
+                            localStorage.setItem("headerId", 1);
+                        }}
                     >
                         Home
                     </NavLink>
@@ -28,7 +33,10 @@ const Header = ({ count, setCount }) => {
                 <li className={`h-item ${count === 2 ? "h-active" : ""}`}>
                     <NavLink
                         to="/movies"
-                        onClick={() => setCount(2)}
+                        onClick={() => {
+                            setCount(2);
+                            localStorage.setItem("headerId", 2);
+                        }}
                     >
                         Movies & Shows
                     </NavLink>
@@ -36,7 +44,10 @@ const Header = ({ count, setCount }) => {
                 <li className={`h-item ${count === 3 ? "h-active" : ""}`}>
                     <NavLink
                         to="/support"
-                        onClick={() => setCount(3)}
+                        onClick={() => {
+                            setCount(3);
+                            localStorage.setItem("headerId", 3);
+                        }}
                     >
                         Support
                     </NavLink>
@@ -44,7 +55,10 @@ const Header = ({ count, setCount }) => {
                 <li className={`h-item ${count === 4 ? "h-active" : ""}`}>
                     <NavLink
                         to="/subscriptions"
-                        onClick={() => setCount(4)}
+                        onClick={() => {
+                            setCount(4);
+                            localStorage.setItem("headerId", 4);
+                        }}
                     >
                         Subscriptions
                     </NavLink>

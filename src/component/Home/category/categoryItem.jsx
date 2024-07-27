@@ -22,7 +22,7 @@ const CategoryItem = ({ item, baza }) => {
                             key={movie.id}
                         />
                     ))}
-                    <p>{item.name} <i class="fa-solid fa-arrow-right"></i></p>
+                    <p>{item.name} <i className="fa-solid fa-arrow-right"></i></p>
                 </div>
             </Link>
         </li>

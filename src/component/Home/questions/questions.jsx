@@ -15,7 +15,7 @@ const Questions = () => {
                           01
                         </div>
                         <h4>What is StreamVibe? </h4>
-                        <i class="fa-solid fa-plus"></i>
+                        <i className="fa-solid fa-plus"></i>
                     </div>
                     
                 </li>
@@ -25,7 +25,7 @@ const Questions = () => {
                          05
                         </div>
                         <h4>How do I sign up for StreamVibe?</h4>
-                        <i class="fa-solid fa-plus"></i>
+                        <i className="fa-solid fa-plus"></i>
                     </div>
                     
                 </li>
@@ -35,7 +35,7 @@ const Questions = () => {
                          02
                         </div>
                         <h4>How much does StreamVibe cost? </h4>
-                        <i class="fa-solid fa-plus"></i>
+                        <i className="fa-solid fa-plus"></i>
                     </div>
                 </li>
                 <li className="question-item">
@@ -44,7 +44,7 @@ const Questions = () => {
                          06
                         </div>
                         <h4>What is the StreamVibe free trial? </h4>
-                        <i class="fa-solid fa-plus"></i>
+                        <i className="fa-solid fa-plus"></i>
                     </div>
                     
                 </li>
@@ -56,7 +56,7 @@ const Questions = () => {
                          04
                         </div>
                         <h4>How can I watch StreamVibe? </h4>
-                        <i class="fa-solid fa-plus"></i>
+                        <i className="fa-solid fa-plus"></i>
                     </div>
                 </li>
               

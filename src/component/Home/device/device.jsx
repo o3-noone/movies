@@ -21,7 +21,7 @@ const Device = () => {
                 <li className="device-item">
                     <div className="device-top">
                         <div className="device-icon">
-                        <i class="fa-solid fa-tablet-button"></i>
+                        <i className="fa-solid fa-tablet-button"></i>
                         </div>
                         <h4>Tablet</h4>
                     </div>
@@ -30,7 +30,7 @@ const Device = () => {
                 <li className="device-item">
                     <div className="device-top">
                         <div className="device-icon">
-                        <i class="fa-solid fa-tv"></i>
+                        <i className="fa-solid fa-tv"></i>
                         </div>
                         <h4>Smart TV</h4>
                     </div>
@@ -39,7 +39,7 @@ const Device = () => {
                 <li className="device-item">
                     <div className="device-top">
                         <div className="device-icon">
-                        <i class="fa-solid fa-laptop"></i>
+                        <i className="fa-solid fa-laptop"></i>
                         </div>
                         <h4>Laptops</h4>
                     </div>
@@ -48,7 +48,7 @@ const Device = () => {
                 <li className="device-item">
                     <div className="device-top">
                         <div className="device-icon">
-                        <i class="fa-solid fa-gamepad"></i>
+                        <i className="fa-solid fa-gamepad"></i>
                         </div>
                         <h4>Gaming Consoles</h4>
                     </div>
@@ -57,7 +57,7 @@ const Device = () => {
                 <li className="device-item">
                     <div className="device-top">
                         <div className="device-icon">
-                        <i class="fa-solid fa-vr-cardboard"></i>
+                        <i className="fa-solid fa-vr-cardboard"></i>
                         </div>
                         <h4>VR Headsets </h4>
                     </div>
