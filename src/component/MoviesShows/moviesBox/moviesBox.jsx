@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./moviesBox.css"
 import CategoryItem from '../../Home/category/categoryItem'
 import BoxItem from '../boxItem/boxItem';
+import OneItem from '../oneItem/oneItem';
 const MoviesBox = ({ baza }) => {
     const key = "46ec25609ba3e9b8903dc225769a8f80";
     const [data, setData] = useState([]);
@@ -23,7 +24,7 @@ const MoviesBox = ({ baza }) => {
     }
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [number  ]);
     return (
         <>
             <div className='moviesBox'>
@@ -51,6 +52,7 @@ const MoviesBox = ({ baza }) => {
                     ))}
                 </ul>
                 <BoxItem baza={baza}/>
+                <OneItem baza={baza}/>
             </div>
         </>
     )

@@ -90,7 +90,12 @@
         max-width: 800px;
     }
 }
-
+@media (max-width: 1145px) {
+.box-list{
+    overflow-y: hidden;
+    gap:10px;
+}
+}
 @media (max-width: 1145px) {
     /* home respone */
 
