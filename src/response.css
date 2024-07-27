@@ -205,6 +205,9 @@
         flex-direction: column;
     }
 
+    .question-title>button{
+        bottom: -50px;
+    }
     .trial>button {
         margin-top: 10px;
     }
@@ -241,9 +244,30 @@
 @media (max-width: 550px) {
     .btn-sub {
         width: 140px;
+        max-width: 140px;
     }
-    .question-top>h4{
+
+    .question-top>h4 {
         width: 200px;
-    min-width: 200px;
+        min-width: 200px;
+    }
+ 
+}
+
+@media (max-width: 430px) {
+    .footer-list {
+        grid-template-columns: auto auto;
+    }
+
+    .btn-sub {
+        width: 100px;
+    }
+
+    .question-top>h4 {
+        width: 120px;
+        min-width: 120px;
+    }
+    .device-item{
+        padding: 15px;
     }
 }
