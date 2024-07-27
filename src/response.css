@@ -272,7 +272,7 @@
     }
 
     .btn-sub {
-        width: 100px;
+        width: 130px;
     }
 
     .question-top>h4 {
@@ -282,4 +282,18 @@
     .device-item{
         padding: 15px;
     }
+    .sub-item{
+        min-height: 350px;
+    }
+}
+@media (max-width: 360px) {
+.btns-sub{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+} 
+.btn-sub{
+    width: 100%;
+}
+
 }
