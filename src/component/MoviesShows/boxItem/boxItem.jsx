@@ -14,11 +14,13 @@ const BoxItem = ({ baza }) => {
             console.error('Error fetching data:', error);
         }
     };
-    if (number > 16) {
-        setNumber(4)
-    } else if (number <= 0) {
-        setNumber(16)
-    }
+    useEffect(()=>{
+        if (number >= 17) {
+            setNumber(1);
+        } else if (number <= 0) {
+            setNumber(16);
+        }
+     }, [number])
     useEffect(() => {
         fetchData();
     }, []);
@@ -29,20 +31,20 @@ const BoxItem = ({ baza }) => {
                     <h4>Popular Top 10 In Genres</h4>
                     <div className="dots-movie">
                         <button className="dots-inc" onClick={() => {
-                            setNumber(number - 4)
+                            setNumber(number - 1)
                         }}><i className="fa-solid fa-arrow-left"></i></button>
-                        <span className={`dot ${number === 4 ? "dot-active" : ""}`} onClick={() => { setNumber(4) }}></span>
-                        <span className={`dot ${number === 8 ? "dot-active" : ""}`} onClick={() => { setNumber(8) }}></span>
-                        <span className={`dot ${number === 12 ? "dot-active" : ""}`} onClick={() => { setNumber(12) }}></span>
-                        <span className={`dot ${number === 16 ? "dot-active" : ""}`} onClick={() => { setNumber(16) }}></span>
+                        <span className={`dot ${number < 5 ? "dot-active" : ""}`} onClick={() => { setNumber(1) }}></span>
+                        <span className={`dot ${number >4 && number < 9 ? "dot-active" : ""}`} onClick={() => { setNumber(5) }}></span>
+                        <span className={`dot ${number >8 && number < 13 ? "dot-active" : ""}`} onClick={() => { setNumber(9) }}></span>
+                        <span className={`dot ${number > 12 ? "dot-active" : ""}`} onClick={() => { setNumber(14) }}></span>
                         <button className="dots-inc" onClick={() => {
-                            setNumber(number + 4)
+                            setNumber(number + 1)
                         }}><i className="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
-                <ul className="box-list">
-                    {data && data.slice(number - 4, number).map((item) => (
-                        <CategoryItem baza={baza} key={item.id+2} item={item} />
+                <ul className="category-list">
+                    {data.map((item) => (
+                        <CategoryItem baza={baza} count={number} key={item.id+2} item={item} />
                     ))}
                 </ul>
             </div>

@@ -5,34 +5,33 @@ import "./oneItem.css";
 const OneItem = ({ baza }) => {
     const [number, setNumber] = useState(5);
 
-    useEffect(() => {
-        if (number > 20) {
-            setNumber(5);
+    useEffect(()=>{
+        if (number >= 17) {
+            setNumber(1);
         } else if (number <= 0) {
-            setNumber(20);
+            setNumber(16);
         }
-    }, [number]);
-console.log(baza);
+     }, [number])
     return (
         <>
             <div className="moviesTitle">
                 <h4>Trending Now</h4>
                 <div className="dots-movie">
-                    <button className="dots-inc" onClick={() => {
-                        setNumber(number - 5);
-                    }}><i className="fa-solid fa-arrow-left"></i></button>
-                    <span className={`dot ${number === 5 ? "dot-active" : ""}`} onClick={() => { setNumber(5); }}></span>
-                    <span className={`dot ${number === 10 ? "dot-active" : ""}`} onClick={() => { setNumber(10); }}></span>
-                    <span className={`dot ${number === 15 ? "dot-active" : ""}`} onClick={() => { setNumber(15); }}></span>
-                    <span className={`dot ${number === 20 ? "dot-active" : ""}`} onClick={() => { setNumber(20); }}></span>
-                    <button className="dots-inc" onClick={() => {
-                        setNumber(number + 5);
-                    }}><i className="fa-solid fa-arrow-right"></i></button>
-                </div>
+                        <button className="dots-inc" onClick={() => {
+                            setNumber(number - 1)
+                        }}><i className="fa-solid fa-arrow-left"></i></button>
+                        <span className={`dot ${number < 5 ? "dot-active" : ""}`} onClick={() => { setNumber(1) }}></span>
+                        <span className={`dot ${number >4 && number < 9 ? "dot-active" : ""}`} onClick={() => { setNumber(5) }}></span>
+                        <span className={`dot ${number >8 && number < 13 ? "dot-active" : ""}`} onClick={() => { setNumber(9) }}></span>
+                        <span className={`dot ${number > 12 ? "dot-active" : ""}`} onClick={() => { setNumber(14) }}></span>
+                        <button className="dots-inc" onClick={() => {
+                            setNumber(number + 1)
+                        }}><i className="fa-solid fa-arrow-right"></i></button>
+                    </div>
             </div>
             <ul className="category-list">
-                {baza && baza.slice(number - 5, number).map((item) => (
-                    <li className='category-item' key={item.id}>
+                {baza.map((item) => (
+                    <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )` }} key={item.id}>
                         <Link to={`/${item.title}`}>
                             <div className='category-imgs movieImg'>
                                 <img

@@ -68,6 +68,10 @@ function App() {
       navigate("/");
     } else if (count === 2) {
       navigate("/movies");
+    } else if (count ===3){
+      navigate("/support")
+    } else{
+      navigate("/subscription")
     }
   }, [count, navigate]);
 
@@ -83,7 +87,7 @@ function App() {
         <Route path="/" element={<Home data={data} />} />
         <Route path="/movies" element={<Movies data={data} />} />
       </Routes>
-      <Footer />
+      <Footer setCount={setCount} />
     </div>
   );
 }

@@ -1,38 +1,53 @@
 import React from 'react'
 import "./footer.css"
 import { Link } from 'react-router-dom'
-const Footer = () => {
+const Footer = ({setCount}) => {
   return (
     <div className='footer p4'>
         <ul className="footer-list">
             <li className="footer-item">
-                <Link to={"/"}>Home</Link>
+                <Link to={"/"} onClick={()=>{setCount(1);
+                            localStorage.setItem("headerId", 1);
+
+                }}>Home</Link>
                 <p className='item itemF'><Link>Categories</Link></p>
                 <p className='item'><Link>Devices</Link></p>
                 <p className='item'><Link>Pricing</Link></p>
                 <p className='item'><Link>FAQ</Link></p>
             </li>
             <li className="footer-item">
-                <Link to={"/"}>Movies</Link>
+                <Link to={"/movies"} onClick={()=>{setCount(2);
+                            localStorage.setItem("headerId", 2);
+
+                }}>Movies</Link>
                 <p className='item itemF'><Link>Gernes</Link></p>
                 <p className='item'><Link>Trending</Link></p>
                 <p className='item'><Link>New Release</Link></p>
                 <p className='item'><Link>Popular</Link></p>
             </li>
             <li className="footer-item">
-                <Link to={"/"}>Shows</Link>
+                <Link to={"/movies"} onClick={()=>{setCount(2);
+                            localStorage.setItem("headerId", 2);
+
+                }}>Shows</Link>
                 <p className='item itemF'><Link>Gernes</Link></p>
                 <p className='item'><Link>Trending</Link></p>
                 <p className='item'><Link>New Release</Link></p>
                 <p className='item'><Link>Popular</Link></p>
             </li>
             <li className="footer-item">
-                <Link to={"/"}>Support</Link>
+                <Link to={"/support"} onClick={()=>{setCount(3);
+                            localStorage.setItem("headerId", 3);
+
+                }}>Support</Link>
                 <p className='item itemF'><Link>Contact Us</Link></p>
               
             </li>
             <li className="footer-item">
-                <Link to={"/"}>Subscription</Link>
+                <Link to={"/subscription" } onClick={()=>{setCount(4);
+                            localStorage.setItem("headerId", 4);
+
+                }}>Subscription</Link>
                 <p className='item itemF'><Link>Categories</Link></p>
                 <p className='item'><Link>Devices</Link></p>
              
