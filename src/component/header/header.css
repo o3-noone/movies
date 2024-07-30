@@ -103,10 +103,14 @@
     color: white;
     transition: left 0.3s ease;
     z-index: 999998;
-    padding-top: 120px; /* Header ostidan boshlanishi uchun */
+    padding-top: 35px;
+    /* padding-top: 120px; Header ostidan boshlanishi uchun */
 }
 
 .sidebar.open {
     left: 0; /* Sidebar ochilganda ko'rinadi */
 }
 
+.hM-list>.h-logo{
+    padding-left: 7%;
+}

@@ -31,6 +31,18 @@ const HeaderMobile = ({ count, setCount }) => {
             </div>
             <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <ul className="hM-list">
+                <div className="h-logo">
+                    <NavLink
+                        to="/"
+                        onClick={() => {
+                            setCount(1);
+                            localStorage.setItem("headerId", 1);
+                            toggleSidebar();
+                        }}
+                    >
+                        <img src={logo} alt="logo" />
+                    </NavLink>
+                </div>
                     <li className={`h-item ${count === 1 ? "h-active" : ""}`}>
                         <NavLink
                             to="/"
