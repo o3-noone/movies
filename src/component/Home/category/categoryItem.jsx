@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CategoryItem = ({ item, baza }) => {
-    const getRandomMovies = (array, num) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array.slice(0, num);
-    };
+const CategoryItem = ({ item, baza, count }) => {
 
-    const randomMovies = getRandomMovies([...baza], 4);
+
     return (
-        <li className='category-item'>
+        <li className='category-item' style={{ transform: `translateX(-${(count - 1) * 100}% )` }}>
             <Link to={`/${item.name}`}>
-                <div className='category-imgs' >
-                    {randomMovies.map((movie) => (
+                <div className='category-imgs'>
+                    {baza.slice(0, 4).map((movie) => (
                         <img
                             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                             alt={movie.title}
@@ -27,6 +20,6 @@ const CategoryItem = ({ item, baza }) => {
             </Link>
         </li>
     );
-}
+};
 
 export default CategoryItem;

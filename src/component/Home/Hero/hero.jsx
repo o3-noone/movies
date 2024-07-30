@@ -15,21 +15,26 @@ const Hero = ({ data }) => {
       return array;
     };
 
-    const shuffled = shuffleArray([...data]);
-    setShuffledData(shuffled);
+    if (data) {
+      const shuffled = shuffleArray([...data]);
+      setShuffledData(shuffled);
+    }
   }, [data]);
-
   return (
     <>
       <div className='hero-bg'>
-        {shuffledData.map((item) => (
-          <img
-            className='bg-img'
-            key={item.id}
-            src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-            alt={item.title}
-          />
-        ))}
+        {shuffledData.length > 0 ? (
+          shuffledData.map((item) => (
+            <img
+              className='bg-img'
+              key={item.id}
+              src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+              alt={item.title}
+            />
+          ))
+        ) : (
+         <>Loading...</>
+        )}
         <div className="hero">
           <div className="hero-img">
             <img src={icon} alt="icon" />

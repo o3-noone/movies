@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './header.css';
 import logo from './Logo.svg';
 import { Link, NavLink } from 'react-router-dom';
 
 const Header = ({ count, setCount }) => {
-    
+    const headerRef = useRef(null);
+    const [width, setWidth] = useState(0);
+
+    useEffect(() => {
+        const updateWidth = () => {
+            if (headerRef.current) {
+                setWidth(headerRef.current.offsetWidth);
+            }
+        };
+
+        updateWidth();
+        window.addEventListener('resize', updateWidth);
+        return () => {
+            window.removeEventListener('resize', updateWidth);
+        };
+    }, []);
+
     return (
-        <div className='header p4'>
+        <div className='header p4' ref={headerRef}>
             <div className="h-logo">
                 <NavLink
                     to="/"
@@ -64,13 +80,13 @@ const Header = ({ count, setCount }) => {
                     </NavLink>
                 </li>
             </ul>
-            <div className="h-burger">
-            <i className="fa-solid fa-bars-staggered"></i>
-            </div>
-            <div className="h-btns">
+            {width >= 784 ? <div className="h-btns">
                 <button><i className="fa-solid fa-magnifying-glass"></i></button>
                 <button><i className="fa-regular fa-bell"></i></button>
+            </div> : <div className="h-burger">
+                <i className="fa-solid fa-bars-staggered"></i>
             </div>
+            }
         </div>
     );
 };
