@@ -2,7 +2,7 @@
   padding: 150px 5% 0 5%;
 }
 .inMovies-text{
-    width: 100%;
+    max-width: 100%;
     min-height: 700px;
     display: flex;
     justify-content: space-between;
@@ -33,7 +33,12 @@
     margin-left: 20px;
     color: white;
     padding: 40px;
-
+}
+.inMovie-infoMax{
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
 }
 .inMovie-cast{
     max-width: 1060px;
@@ -95,6 +100,7 @@
 }
 .inMovie-reviews{
     max-width: 1060px;
+    width: 100%;
     min-height: 400px;
     margin-top: 20px;
     background-color: #141414;
@@ -135,7 +141,6 @@
     transform: translateX(0);
 }
 .review-item{
-    min-width: 470;
     height: 300px;
     border-radius: 20px;
     border: 1px solid #393939;

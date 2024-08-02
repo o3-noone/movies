@@ -101,6 +101,7 @@ const InMovies = ({ item, width }) => {
     if (!item) {
         return <div>Loading...</div>;
     }
+    const selectWidth = width / 100
     return (
         <>
             <div className="inMovie">
@@ -171,7 +172,6 @@ const InMovies = ({ item, width }) => {
                             <div className="movies-box">
                                 <div className="movie-text">
                                     <h3>{item.title}</h3>
-                                    <p>{item.overview}</p>
                                 </div>
                                 <div className="movie-btns">
                                     <button
@@ -211,11 +211,68 @@ const InMovies = ({ item, width }) => {
 
                 <div className="inMovies-text">
                     <div className="inMovise-left">
-                        <div className="inMovie-desc">
+                        <div className="inMovie-desc" style={{
+                            minWidth: width >= 1390 ? 'auto' : `${selectWidth * 90}px`
+                        }}>
                             <h4>Description</h4>
                             <p>{item.overview}</p>
                         </div>
-                        <div className="inMovie-cast">
+                        {width <= 1390 ? <>
+                            <div
+                                className="inMovie-info inMovie-infoMax"
+                                style={{
+                                    minWidth: width >= 1390 ? 'auto' : `${selectWidth * 90}px`,
+                                    marginTop: "20px",
+                                    marginLeft: "0"
+                                }}
+                            >
+                                <div className="inMovie-info-text">
+                                    <h4><i className='fa-solid fa-calendar'></i> Released year</h4>
+                                    <p>{item.release_date.slice(0, 4)}</p>
+                                </div>
+                                <div className="inMovie-info-text">
+                                    <h4><i className='fa-solid fa-language'></i> Available Languages</h4>
+                                    <span className='span-lang'>English</span>
+                                </div>
+                                <div className="inMovie-info-text">
+                                    <h4><i className='fa-solid fa-star'></i> Rating</h4>
+                                    <div className="rating-movie">
+                                        <span>
+                                            <div className="span-text">
+                                                IMDb
+                                            </div>
+                                            <div className="span-rating">
+                                                <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
+                                                {item.vote_average - 1.76
+                                                }
+                                            </div>
+                                        </span>
+                                        <span>
+                                            <div className="span-text">
+                                                Streamvibe
+                                            </div>
+                                            <div className="span-rating">
+                                                <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
+                                                {item.vote_average
+                                                }
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="inMovie-info-text">
+                                    <h4><i className='fa-solid fa-language'></i> Genres</h4>
+                                    <div className='rating-movie'>
+                                        {filterData.map((gen) => (
+                                            <span key={gen.id} className='span-lang'>{gen.name}</span>
+                                        ))}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </> : <></>}
+                        <div className="inMovie-cast" style={{
+                            minWidth: width >= 1390 ? 'auto' : `${selectWidth * 90}px`
+                        }}>
                             <div className="cast-top">
                                 <h4>Cast</h4>
                                 <div className="cast-btns">
@@ -235,12 +292,17 @@ const InMovies = ({ item, width }) => {
                                 ))}
                             </div>
                         </div>
-                        <div className="inMovie-reviews">
+                        <div
+                            className="inMovie-reviews"
+                            style={{
+                                minWidth: width >= 1390 ? 'auto' : `${selectWidth * 90}px`
+                            }}
+                        >
                             <div className="reviews-top">
                                 <h4>Reviews</h4>
                                 <button>+ Add Your Review</button>
                             </div>
-                            {reviews.length >0 ? <>
+                            {reviews.length > 0 ? <>
 
                                 <div className="reviews-list">
                                     {reviews && reviews.map((item, index) => (
@@ -277,53 +339,55 @@ const InMovies = ({ item, width }) => {
                                         <i className="fa-solid fa-arrow-right"></i>
                                     </button>
                                 </div>
-                            </> : <p style={{color: "white"}}> No Reviews</p>}
+                            </> : <p style={{ color: "white" }}> No Reviews</p>}
                         </div>
                     </div>
-                    <div className="inMovie-info">
-                        <div className="inMovie-info-text">
-                            <h4><i className='fa-solid fa-calendar'></i> Released year</h4>
-                            <p>{item.release_date.slice(0, 4)}</p>
-                        </div>
-                        <div className="inMovie-info-text">
-                            <h4><i className='fa-solid fa-language'></i> Available Languages</h4>
-                            <span className='span-lang'>English</span>
-                        </div>
-                        <div className="inMovie-info-text">
-                            <h4><i className='fa-solid fa-star'></i> Rating</h4>
-                            <div className="rating-movie">
-                                <span>
-                                    <div className="span-text">
-                                        IMDb
-                                    </div>
-                                    <div className="span-rating">
-                                        <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
-                                        {item.vote_average - 1.76
-                                        }
-                                    </div>
-                                </span>
-                                <span>
-                                    <div className="span-text">
-                                        Streamvibe
-                                    </div>
-                                    <div className="span-rating">
-                                        <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
-                                        {item.vote_average
-                                        }
-                                    </div>
-                                </span>
+                    {width >= 1390 ? <>
+                        <div className="inMovie-info">
+                            <div className="inMovie-info-text">
+                                <h4><i className='fa-solid fa-calendar'></i> Released year</h4>
+                                <p>{item.release_date.slice(0, 4)}</p>
                             </div>
-                        </div>
-                        <div className="inMovie-info-text">
-                            <h4><i className='fa-solid fa-language'></i> Genres</h4>
-                            <div className='rating-movie'>
-                                {filterData.map((gen) => (
-                                    <span key={gen.id} className='span-lang'>{gen.name}</span>
-                                ))}
+                            <div className="inMovie-info-text">
+                                <h4><i className='fa-solid fa-language'></i> Available Languages</h4>
+                                <span className='span-lang'>English</span>
                             </div>
+                            <div className="inMovie-info-text">
+                                <h4><i className='fa-solid fa-star'></i> Rating</h4>
+                                <div className="rating-movie">
+                                    <span>
+                                        <div className="span-text">
+                                            IMDb
+                                        </div>
+                                        <div className="span-rating">
+                                            <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
+                                            {item.vote_average - 1.76
+                                            }
+                                        </div>
+                                    </span>
+                                    <span>
+                                        <div className="span-text">
+                                            Streamvibe
+                                        </div>
+                                        <div className="span-rating">
+                                            <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
+                                            {item.vote_average
+                                            }
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="inMovie-info-text">
+                                <h4><i className='fa-solid fa-language'></i> Genres</h4>
+                                <div className='rating-movie'>
+                                    {filterData.map((gen) => (
+                                        <span key={gen.id} className='span-lang'>{gen.name}</span>
+                                    ))}
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
+                    </> : <></>}
                 </div>
             </div>
             <Trial />
