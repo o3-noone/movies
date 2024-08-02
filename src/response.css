@@ -321,6 +321,9 @@
     .review-item{
         height: 450px;
     }
+    .inMovie-desc{
+        min-height: 250px;
+    }
 }
 @media (max-width: 430px) {
     /* home respone */
@@ -350,6 +353,11 @@
 
     .sub-item {
         min-height: 350px;
+    }
+    .reviews-item{
+        height: 600px;
+    }.review-item{
+        height: 550px;
     }
 }
 
