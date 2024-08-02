@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MoviesItem = ({ item, count }) => {
     const [add, setAdd] = useState(false);
     const [like, setLike] = useState(false);
     const [music, setMusic] = useState(false);
-
+const navigate=useNavigate()
+    const formatTitle = (title) => {
+        let formattedTitle = title.replace(/[^\w\s]/g, '-'); 
+        formattedTitle = formattedTitle.replace(/-+/g, '-');
+        formattedTitle = formattedTitle.replace(/\s+/g, '-');
+        formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
+        return formattedTitle;
+      };
     return (
         <div
             style={{ 
@@ -20,7 +28,9 @@ const MoviesItem = ({ item, count }) => {
                         <p>{item.overview}</p>
                     </div>
                     <div className="movie-btns">
-                        <button className="movie-play" aria-label="Play Now">Play Now</button>
+                        <button className="movie-play" onClick={()=>{
+                            navigate(`/movies/${formatTitle(item.title.toLowerCase())}`)
+                        }} aria-label="Play Now">Play Now</button>
                         <button 
                             className='movie-btn' 
                             onClick={() => setAdd(!add)}

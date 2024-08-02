@@ -1,0 +1,251 @@
+.inMovie{
+  padding: 150px 5% 0 5%;
+}
+.inMovies-text{
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+.inMovie-desc{
+    max-width: 1060px;
+    padding: 40px;
+    height: 200px;
+    background-color: #141414;
+    border-radius: 20px;
+}
+.inMovie-desc>h4{
+    color: grey;
+}
+.inMovie-desc>p{
+    color: white;
+    margin-top: 25px;
+}
+.inMovie-info{
+    max-width: 520px;
+    width: 100%;
+    min-width: 300px;
+    min-height: 550px;
+    max-height: 700px;
+    background-color: #141414;
+    border-radius: 20px;
+    margin-left: 20px;
+    color: white;
+    padding: 40px;
+
+}
+.inMovie-cast{
+    max-width: 1060px;
+    padding: 40px;
+    max-height: 300px;
+    margin-top: 20px;
+    background-color: #141414;
+    border-radius: 20px;
+}
+.actors-list{
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    margin-top: 20px;
+
+}
+.actor-item{
+    min-width: 100px;
+    max-width: 100px;
+    padding: 5px;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+.actor-item>img{
+    border-radius: 10px;
+    width: 100%;
+}
+.cast-top{
+    display: flex;
+}
+.cast-top>h4{
+    margin-left: 0;
+    color: grey;
+}
+.cast-btns{
+    width: 120px;
+    height: 40px;
+    margin-right: 0;
+    display: flex;
+}
+.cast-btns>button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: grey;
+    border: 1px solid #393939;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.cast-btns>button:hover{
+    color: white;
+}
+.cast-btns>button:last-child{
+    margin-right: 0;
+}
+.inMovie-reviews{
+    max-width: 1060px;
+    min-height: 400px;
+    margin-top: 20px;
+    background-color: #141414;
+    border-radius: 20px;
+    padding: 40px;
+}
+.reviews-top{
+    display: flex;
+}
+.reviews-top>h4{
+    color: grey;
+    margin-left: 0;
+}
+.reviews-top>button{
+    background-color: transparent;
+    padding: 10px 20px;
+    margin-right: 0;
+    border: 1px solid #393939;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.reviews-list{
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: space-between;
+
+}
+.reviews-item{
+    min-width: 490px;
+    height: 340px;
+    margin: 0;
+    padding: 20px;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+.review-item{
+    min-width: 470;
+    height: 300px;
+    border-radius: 20px;
+    border: 1px solid #393939;
+    padding: 40px;
+    background-color: black;
+    color: white;
+}
+.review-item-top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.review-left{
+    margin-left: 0;
+}
+.review-left>p{
+    color: grey;
+    margin-top: 10px;
+}
+.review-rating{
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+    border: 1px solid #393939;
+}
+.review-rating>p{
+    margin-left: 5px;
+}
+.review-item>p{
+color: grey;
+}
+.review-text{
+    color: grey;
+    margin-top: 20px;
+}
+.review-btns{
+    max-width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.review-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #393939;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    background-color: black;
+}
+.review-dot {
+    width: 10px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
+}
+.review-dot:last-child{
+   background-color: transparent;
+}
+.review-act {
+    width: 30px;
+    transition: transform 1s ease-in-out;
+    background-color: red;
+}
+
+.inMovie-info-text{
+    width: 100%;
+    min-height: 80px;
+    margin-bottom: 15px;
+}
+.inMovie-info-text>h4{
+    color: grey;
+}
+.inMovie-info-text>p{
+    margin-top: 15px;
+}
+.span-lang{
+    margin-left: 0;
+    margin-top: 15px;
+    width: max-content;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    border: 1px solid #393939;
+    border-radius: 5px;
+}
+.span-text{
+    margin-bottom: 10px;
+}
+.rating-movie{
+    max-width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    margin-top: 10px;
+    margin-left: 0;
+}
+.rating-movie>span{
+    padding: 15px;
+    border: 1px solid #393939;
+    background-color: black;
+    border-radius: 7px;
+    margin-right: 20px;
+    margin-left: 0;
+}

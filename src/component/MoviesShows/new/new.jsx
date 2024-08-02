@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import "./oneItem.css";
-
-const OneItem = ({ baza }) => {
+const New = ({ baza }) => {
     const [number, setNumber] = useState(1);
-
-    useEffect(()=>{
-        if (number >= 17) {
-            setNumber(1);
-        } else if (number <= 0) {
-            setNumber(16);
-        }
-     }, [number])
-     const formatTitle = (title) => {
+    const formatTitle = (title) => {
         let formattedTitle = title.replace(/[^\w\s]/g, '-'); 
         formattedTitle = formattedTitle.replace(/-+/g, '-');
         formattedTitle = formattedTitle.replace(/\s+/g, '-');
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
         return formattedTitle;
       };
+    useEffect(()=>{
+        if (number > 17) {
+            setNumber(1);
+        } else if (number <= 0) {
+            setNumber(16);
+        }
+     }, [number])
     return (
         <>
             <div className="moviesTitle">
-                <h4>Trending Now</h4>
+                <h4>New Releases</h4>
                 <div className="dots-movie">
                         <button className="dots-inc" onClick={() => {
                             setNumber(number - 1)
@@ -46,8 +43,7 @@ const OneItem = ({ baza }) => {
                                     alt={item.title}
                                 />
                                 <div className="filmtext">
-                                    <span className='filmTime'><i className="fa-regular fa-clock"></i> 1h 30min</span>
-                                    <span className='filmView'><i className="fa-regular fa-eye"></i> {item.vote_count}</span>
+                                    <span className='filmTimeCenter'>Released at {item.release_date}</span>
                                 </div>
                             </div>
                         </Link>
@@ -58,4 +54,4 @@ const OneItem = ({ baza }) => {
     );
 };
 
-export default OneItem;
+export default New;

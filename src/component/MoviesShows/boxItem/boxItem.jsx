@@ -4,7 +4,7 @@ import CategoryItem from '../../Home/category/categoryItem'
 const BoxItem = ({ baza }) => {
     const key = "46ec25609ba3e9b8903dc225769a8f80";
     const [data, setData] = useState([]);
-    const [number, setNumber] = useState(4)
+    const [number, setNumber] = useState(1)
     const fetchData = async () => {
         try {
             const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
@@ -15,9 +15,9 @@ const BoxItem = ({ baza }) => {
         }
     };
     useEffect(()=>{
-        if (number >= 17) {
+        if (number > 16) {
             setNumber(1);
-        } else if (number <= 0) {
+        } else if (number < 1) {
             setNumber(16);
         }
      }, [number])

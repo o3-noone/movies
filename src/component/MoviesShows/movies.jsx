@@ -6,7 +6,7 @@ import MoviesBox from './moviesBox/moviesBox';
 
 const Movies = ({ data }) => {
   const [count, setCount] = useState(0);
-  const selectData = data.slice(16, 20);
+  const selectData = data.slice(15, 19);
   const handlePrev = () => {
     setCount(prev => (prev - 1 + selectData.length) % selectData.length);
   };

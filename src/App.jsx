@@ -3,15 +3,15 @@ import './App.css';
 import Home from './component/Home/home';
 import Header from './component/header/header';
 import Footer from './component/Footer/footer';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Movies from './component/MoviesShows/movies';
 import HeaderMobile from './component/header/headerMobile';
+import InMovies from './component/inMovie/inMovies';
 
 function App() {
   const key = "46ec25609ba3e9b8903dc225769a8f80";
   const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
-  const navigate = useNavigate();
 
   // Header kengligini olish uchun hooklar
   const headerRef = useRef(null);
@@ -64,16 +64,25 @@ function App() {
   }, [key]);
 
   useEffect(() => {
-    if (count === 1) {
-      navigate("/");
-    } else if (count === 2) {
-      navigate("/movies");
-    } else if (count ===3){
-      navigate("/support")
-    } else{
-      navigate("/subscription")
+    const id = localStorage.getItem("headerId")
+    if (id === 1) {
+      setCount(1)
+    } else if (id === 2) {
+      setCount(2)
+    } else if (id === 3) {
+      setCount(3)
+    } else if (id === 4) {
+      setCount(4)
     }
-  }, [count, navigate]);
+  }, [count]);
+
+  const formatTitle = (title) => {
+    let formattedTitle = title.replace(/[^\w\s]/g, '-'); 
+    formattedTitle = formattedTitle.replace(/-+/g, '-');
+    formattedTitle = formattedTitle.replace(/\s+/g, '-');
+    formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
+    return formattedTitle;
+  };
 
   return (
     <div className="container" ref={headerRef}>
@@ -86,6 +95,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home data={data} />} />
         <Route path="/movies" element={<Movies data={data} />} />
+        {data.map((item) => (
+          <Route
+
+            key={item.id}
+            path={`/movies/${formatTitle(item.title.toLowerCase())}`}
+            element={<InMovies width={width} item={item} />}
+          />
+        ))}
+
       </Routes>
       <Footer setCount={setCount} />
     </div>

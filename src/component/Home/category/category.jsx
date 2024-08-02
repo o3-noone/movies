@@ -21,7 +21,7 @@ const Category = ({ baza }) => {
     }, []);
 
     useEffect(() => {
-        if (number >= 17) {
+        if (number > 17) {
             setNumber(1);
         } else if (number <= 0) {
             setNumber(16);
