@@ -48,6 +48,7 @@
         height: 342px;
 
     }
+  
 
 }
 
@@ -314,26 +315,14 @@
     }
 }
 @media (max-width: 500px) {
-    .reviews-item{
-        min-width: 320px;
-        height: 500px;
-    }
-    .review-item{
-        height: 450px;
-    }
+
     .inMovie-desc{
         min-height: 250px;
     }
 }
 @media (max-width: 430px) {
     /* home respone */
-    .reviews-item{
-        min-width: 270px;
-        height: 550px;
-    }
-    .review-item{
-        height: 500px;
-    }
+
     .footer-list {
         grid-template-columns: auto auto;
     }

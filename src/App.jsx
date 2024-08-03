@@ -63,25 +63,12 @@ function App() {
     fetchData();
   }, [key]);
 
-  useEffect(() => {
-    const id = localStorage.getItem("headerId")
-    if (id === 1) {
-      setCount(1)
-    } else if (id === 2) {
-      setCount(2)
-    } else if (id === 3) {
-      setCount(3)
-    } else if (id === 4) {
-      setCount(4)
-    }
-  }, [count]);
-
   const formatTitle = (title) => {
-    let formattedTitle = title.replace(/[^\w\s]/g, '-'); 
+    let formattedTitle = title.replace(/[^\w\s]/g, '-');
     formattedTitle = formattedTitle.replace(/-+/g, '-');
     formattedTitle = formattedTitle.replace(/\s+/g, '-');
     formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-    return formattedTitle;
+    return formattedTitle.toLowerCase(); // Ensure all titles are in lowercase
   };
 
   return (
@@ -97,13 +84,12 @@ function App() {
         <Route path="/movies" element={<Movies data={data} />} />
         {data.map((item) => (
           <Route
-
             key={item.id}
-            path={`/movies/${formatTitle(item.title.toLowerCase())}`}
+            path={`/movies/${formatTitle(item.title)}`}
             element={<InMovies width={width} item={item} />}
           />
         ))}
-
+        <Route path="*" element={<div>Page not found</div>} /> {/* Fallback route */}
       </Routes>
       <Footer setCount={setCount} />
     </div>

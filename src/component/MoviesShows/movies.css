@@ -55,7 +55,7 @@
 
 }
 .movie-btns{
-    width: 300px;
+   max-width: 300px;
     display: flex;
     align-items: center;
     margin-top: 10px;
