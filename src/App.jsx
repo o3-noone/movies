@@ -89,6 +89,20 @@ function App() {
             element={<InMovies width={width} item={item} />}
           />
         ))}
+        {data.map((item) => (
+          <Route
+            key={item.id}
+            path={`/new/${formatTitle(item.title)}`}
+            element={<InMovies width={width} item={item} />}
+          />
+        ))}
+         {data.map((item) => (
+          <Route
+            key={item.id}
+            path={`/trending/${formatTitle(item.title)}`}
+            element={<InMovies width={width} item={item} />}
+          />
+        ))}
         <Route path="*" element={<div>Page not found</div>} /> {/* Fallback route */}
       </Routes>
       <Footer setCount={setCount} />

@@ -36,7 +36,7 @@ const New = ({ baza }) => {
             <ul className="category-list">
                 {baza.map((item) => (
                     <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )` }} key={item.id}>
-                        <Link to={`/movies/${formatTitle(item.title.toLowerCase())}`}>
+                        <Link to={`/new/${formatTitle(item.title.toLowerCase())}`}>
                             <div className='category-imgs movieImg'>
                                 <img
                                     src={`https://image.tmdb.org/t/p/original${item.poster_path}`}

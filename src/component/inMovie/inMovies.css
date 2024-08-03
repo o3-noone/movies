@@ -151,7 +151,9 @@
 .review-item-top{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
 }
 .review-left{
     margin-left: 0;

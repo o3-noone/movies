@@ -319,6 +319,9 @@
     .inMovie-desc{
         min-height: 250px;
     }
+    .inMovie-reviews{
+        padding: 40px 10px;
+    }
 }
 @media (max-width: 430px) {
     /* home respone */
