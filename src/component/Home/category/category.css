@@ -6,41 +6,49 @@
 .category-title {
     min-height: 100px;
     color: white;
+    display: flex;
 }
 
-.category-title>h4 {
+.top-category{
+    margin-left: 0;
+}
+.top-category>h4 {
     font-size: 25px;
     margin-top: 5px;
     margin-left: 0;
 }
 
-.category-title>p {
+.top-category>p {
     margin-top: 10px;
     color: grey;
     margin-left: 0;
 }
+.categoryList-box{
+    position: relative;
+}
 
 .category-list {
     width: 100%;
-    height: 350px;
     display: flex;
     align-items: end;
     justify-content: space-between;
     overflow: hidden;
     transition: transform 0.5s ease-in-out;
-    gap: 11px;
+    position: relative;
 }
 
 .category-item {
-    position: relative;
-    height: 282px;
-    background-color: rgb(16, 16, 16);
-    border: 1px solid rgb(74, 74, 74);
-    border-radius: 10px;
+    padding: 10px;
+    background-color: transparent;
     transition: transform 0.5s ease-in-out;
     transform: translateX(0);
 }
-
+.category-items{
+    position: relative;
+    background-color: rgb(16, 16, 16);
+    border: 1px solid rgb(74, 74, 74);
+    border-radius: 10px;
+}
 
 .category-imgs {
     width: 100%;
@@ -61,12 +69,14 @@
 
 .category-imgs>p {
     width: 100%;
+    flex-wrap: nowrap;
     display: flex;
     color: white;
+    /* position: relative; */
 }
 
 .category-imgs>p>i {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .dots {
@@ -82,7 +92,15 @@
     margin-right: 0;
     margin-top: 20px;
 }
-
+.dots2{
+    width: 150px;
+    height: 5px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+margin-top: 7px;    
+}
 .dot {
     width: 15px;
     height: 3px;
@@ -104,6 +122,32 @@
     outline: none;
     cursor: pointer;
     border-radius: 5px;
+    color: white;
+}
+.dots-inc2{
+    position: absolute;
+    top: 40%;
+    width: 40px;
+    height: 60px;
+    background-color: rgb(33, 33, 33);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    color: white;
+    left: 0;
+}
+.dots-inc3{
+    position: absolute;
+    top: 40%;
+    right: 0;
+    width: 40px;
+    height: 60px;
+    background-color: rgb(33, 33, 33);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px 0 0 5px;
     color: white;
 }
 

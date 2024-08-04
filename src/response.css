@@ -17,11 +17,6 @@
         width: 100%;
     }
 
-    .category-item {
-        min-width: 300px;
-        height: 342px;
-
-    }
 }
 
 /* Laptop */
@@ -43,13 +38,6 @@
         width: 100%;
     }
 
-    .category-item {
-        min-width: 300px;
-        height: 342px;
-
-    }
-  
-
 }
 
 @media (max-width: 1560px) {
@@ -58,10 +46,6 @@
     .question-item {
         max-width: 600px;
     }
-.category-item{
-    min-width: 280px;
-    height: 300px;
-}
 .inMovie-desc, .inMovie-cast, .inMovie-reviews{
     max-width: 900px;
     margin-left: 0;
@@ -99,11 +83,6 @@
     .device-list {
         grid-template-columns: auto auto;
     }
-    .category-item{
-        min-width: 240px;
-        max-width: 240px;
-    }
-
 }
 
 
@@ -269,14 +248,6 @@
         gap: 20px;
     }
 
-    .category-list{
-        align-items: center;
-        height: 250px;
-    }
-    .category-item{
-        min-width: 200px;
-        height: 220px;
-    }
 }
 
 @media (max-width: 550px) {

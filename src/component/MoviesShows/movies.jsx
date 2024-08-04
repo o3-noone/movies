@@ -4,7 +4,7 @@ import MoviesItem from './moviesItem';
 import ScrolTop from '../scrolTop/scrolTop';
 import MoviesBox from './moviesBox/moviesBox';
 
-const Movies = ({ data }) => {
+const Movies = ({ data, width }) => {
   const [count, setCount] = useState(0);
   const selectData = data.slice(15, 19);
   const handlePrev = () => {
@@ -40,7 +40,7 @@ const Movies = ({ data }) => {
           </div>
         </div>
       </div>
-      <MoviesBox baza={data}/>
+      <MoviesBox width={width} baza={data}/>
     </div>
   );
 }
