@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, showTrailer, add, like, music}) => {
+    const  [play ,setPlay] =useState(false)
   return (
     <>
     {trailer && !showTrailer ? (
@@ -34,6 +35,7 @@ const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, show
                                     >
                                         {add ? <i className="fa-solid fa-minus"></i> : <i className="fa-solid fa-plus"></i>}
                                     </button>
+                                
                                     <button
                                         className='movie-btn'
                                         onClick={() => setLike(!like)}
@@ -58,7 +60,7 @@ const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, show
                             <iframe
                                 width="100%"
                                 height="100%"
-                                src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&vq=hd1080`}
+                                src={`https://www.youtube.com/embed/${trailer.key}?autoplay=${play ? 1 : 0}${music ? "&mute=1" : "&mute=0"}&vq=hd1080`}
                                 title="Trailer"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -78,6 +80,13 @@ const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, show
                                         onClick={() => setShowTrailer(!showTrailer)}
                                     >
                                         {showTrailer ? 'Close Trailer' : 'Play Now'}
+                                    </button>
+                                    <button
+                                        className='movie-btn'
+                                        onClick={() => setPlay(!play)}
+                                        aria-label={play ? "Puse" : "Resume"}
+                                    >
+                                        {play ? <i className="fa-solid fa-play"></i> : <i className="fa-solid fa-pause"></i>}
                                     </button>
                                     <button
                                         className='movie-btn'

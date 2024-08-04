@@ -13,8 +13,7 @@ const New = ({ baza, width }) => {
 
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
-        if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
-        if (width <= 1560 && width >= 1000) return `${reviewsWidth}px`;
+        if (width <= 1600 && width >= 1000) return `${reviewsWidth}px`;
         if (width <= 1000 && width >= 770) return `${reviewsWidth2}px`;
         if (width <= 770 && width >= 550) return `${reviewsWidth3}px`;
         return `${reviewsWidth4}px`;
@@ -35,13 +34,13 @@ const New = ({ baza, width }) => {
         return 1;
     };
 
-    const getRandomElements = (arr, count) => {
+    const getRandomElements = (arr) => {
         const shuffled = arr.slice().sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
+        return shuffled.slice(0, baza.length);
     };
 
     useEffect(() => {
-        setRandomData(getRandomElements(baza, getDataLength()));
+        setRandomData(getRandomElements(baza));
     }, [baza]);
 
     useEffect(() => {
@@ -50,7 +49,7 @@ const New = ({ baza, width }) => {
         } else if (number <= 0) {
             setNumber(baza.length - getDataLength());
         }
-    }, [number, baza, width]);
+    }, [number]);
 
     return (
         <>
@@ -61,10 +60,10 @@ const New = ({ baza, width }) => {
                         <button className="dots-inc" onClick={() => setNumber((prev) => prev - 1)}>
                             <i className="fa-solid fa-arrow-left"></i>
                         </button>
-                        <span className={`dot ${number >= 1 && number <= 4 ? "dot-active" : ""}`}></span>
-                        <span className={`dot ${number > 4 && number <= 8 ? "dot-active" : ""}`}></span>
-                        <span className={`dot ${number > 8 && number <= 12 ? "dot-active" : ""}`}></span>
-                        <span className={`dot ${number > 12 ? "dot-active" : ""}`}></span>
+                        <span className={`dot ${number >= 1 && number <= 9 ? "dot-active" : ""}`}></span>
+                        <span className={`dot ${number > 9 && number <= 18 ? "dot-active" : ""}`}></span>
+                        <span className={`dot ${number > 18 && number <= 27 ? "dot-active" : ""}`}></span>
+                        <span className={`dot ${number > 27 ? "dot-active" : ""}`}></span>
                         <button className="dots-inc" onClick={() => setNumber((prev) => prev + 1)}>
                             <i className="fa-solid fa-arrow-right"></i>
                         </button>
