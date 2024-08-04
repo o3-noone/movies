@@ -71,6 +71,7 @@ function App() {
     return formattedTitle.toLowerCase(); // Ensure all titles are in lowercase
   };
 
+
   return (
     <div className="container" ref={headerRef}>
       {width > 784 ? (
@@ -96,27 +97,7 @@ function App() {
             element={<InMovies width={width} item={item} />}
           />
         ))}
-        {data.map((item) => (
-          <Route
-            key={item.id}
-            path={`/movies/:title`}
-            element={<InMovies width={width} item={item} />}
-          />
-        ))}
-         {data.map((item) => (
-          <Route
-            key={item.id}
-            path={`/trending/:title`}
-            element={<InMovies width={width} item={item} />}
-          />
-        ))}
-         {data.map((item) => (
-          <Route
-            key={item.id}
-            path={`/news/:title`}
-            element={<InMovies width={width} item={item} />}
-          />
-        ))}
+   
         {data.map((item) => (
           <Route
             key={item.id}
