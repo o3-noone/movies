@@ -42,7 +42,7 @@ const New = ({ baza, width }) => {
 
     useEffect(() => {
         setRandomData(getRandomElements(baza, getDataLength()));
-    }, [baza, width]);
+    }, [baza]);
 
     useEffect(() => {
         if (number > baza.length - getDataLength()) {
