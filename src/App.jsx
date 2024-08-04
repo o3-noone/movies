@@ -12,7 +12,19 @@ function App() {
   const key = "46ec25609ba3e9b8903dc225769a8f80";
   const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
+  const [list, setList]=useState([])
+  const fetchData = async () => {
+      try {
+          const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
+          const result = await response.json();
+          setList(result.genres);
+      } catch (error) {
+      }
+  };
 
+  useEffect(() => {
+      fetchData();
+  }, []);
   // Header kengligini olish uchun hooklar
   const headerRef = useRef(null);
   const [width, setWidth] = useState(0);
@@ -56,7 +68,6 @@ function App() {
 
         setData(combinedResults.slice(0, 36));
       } catch (error) {
-        console.error('Error fetching data:', error);
       }
     };
 
@@ -97,7 +108,13 @@ function App() {
             element={<InMovies width={width} item={item} />}
           />
         ))}
-   
+    {list.map((item) => (
+          <Route
+            key={item.id}
+            path={`/new/${formatTitle(item.name)}`}
+            element={<div>Page not found</div>}
+          />
+        ))}
         {data.map((item) => (
           <Route
             key={item.id}
