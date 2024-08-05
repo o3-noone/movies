@@ -9,7 +9,7 @@ const InMovieCast = ({ width, actors }) => {
         if (inMovieCastRef.current) {
             setDivWidth(inMovieCastRef.current.offsetWidth);
         }
-    }, [width]);
+    }, [width, actors]);
 
     const ContWidth = width / 100;
     const selectWidth = (divWidth - 80) / 100;
