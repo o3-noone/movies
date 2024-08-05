@@ -40,6 +40,9 @@ const OneItem = ({ baza, width }) => {
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
         return formattedTitle;
     };
+    const defBaza=baza
+    const sortBaza=defBaza.sort((a, b) => b.id - a.id)
+    
     return (
         <>
             <div className="moviesTitle">
@@ -59,7 +62,7 @@ const OneItem = ({ baza, width }) => {
             </div>
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {baza.map((item) => (
+                    {sortBaza.map((item) => (
                         <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={item.id}>
                             <div className="category-items">
                                 <Link to={`/trending/${formatTitle(item.title.toLowerCase())}`}>

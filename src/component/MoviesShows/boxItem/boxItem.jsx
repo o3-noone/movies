@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./boxItem.css"
-import CategoryItem from '../../Home/category/categoryItem'
+import { Link } from 'react-router-dom';
 const BoxItem = ({ baza, width }) => {
     const key = "46ec25609ba3e9b8903dc225769a8f80";
     const [data, setData] = useState([]);
@@ -15,9 +15,9 @@ const BoxItem = ({ baza, width }) => {
         }
     };
     const getDataLength = () => {
-        if (width <= 1920 && width >= 1000) return 4;
-        if (width <= 999 && width >= 770) return 3;
-        if (width <= 769 && width >= 550) return 2
+        if (width <= 1920 && width >= 1000) return 3;
+        if (width <= 999 && width >= 770) return 2;
+        if (width <= 769 && width >= 550) return 1
         return 1
     }
 
@@ -32,6 +32,29 @@ const BoxItem = ({ baza, width }) => {
     useEffect(() => {
         fetchData();
     }, []);
+    const selectWidth = (width - 50) / 100
+    const reviewsWidth = (selectWidth * 90) / 4
+    const reviewsWidth2 = (selectWidth * 90) / 3
+    const reviewsWidth3 = (selectWidth * 90) / 2
+    const reviewsWidth4 = (selectWidth * 90) / 1
+    
+    const getMinWidth = () => {
+        if (width >= 1600) return `${reviewsWidth}px`;
+        if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
+        if (width <= 1560 && width >= 1000) return `${reviewsWidth}px`;
+        if (width <= 1000 && width >= 770) return `${reviewsWidth2}px`
+        if (width <= 770 && width >= 550) return `${reviewsWidth3}px`
+        return `${reviewsWidth4}px`;
+    };
+    const getMinHeight = getMinWidth().slice(0, -2) -20
+
+    const formatTitle = (title) => {
+        let formattedTitle = title.replace(/[^\w\s]/g, '-');
+        formattedTitle = formattedTitle.replace(/-+/g, '-');
+        formattedTitle = formattedTitle.replace(/\s+/g, '-');
+        formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
+        return formattedTitle;
+    };
 
     return (
         <>
@@ -42,8 +65,8 @@ const BoxItem = ({ baza, width }) => {
                         <button className="dots-inc" onClick={() => {
                             setNumber(number - 1)
                         }}><i className="fa-solid fa-arrow-left"></i></button>
-                        <span className={`dot ${number < 5 ? "dot-active" : ""}`} onClick={() => { setNumber(1) }}></span>
-                        <span className={`dot ${number > 4 ? "dot-active" : ""}`} onClick={() => { setNumber(6) }}></span>
+                        <span className={`dot ${number < 4 ? "dot-active" : ""}`} onClick={() => { setNumber(1) }}></span>
+                        <span className={`dot ${number > 3 ? "dot-active" : ""}`} onClick={() => { setNumber(data.length - getDataLength()) }}></span>
                         <button className="dots-inc" onClick={() => {
                             setNumber(number + 1)
                         }}><i className="fa-solid fa-arrow-right"></i></button>
@@ -52,7 +75,22 @@ const BoxItem = ({ baza, width }) => {
                 <div className="categoryList-box">
                     <ul className="category-list">
                         {data && data.map((item) => (
-                            <CategoryItem width={width - 50} baza={baza} key={item.id} count={number} item={item} />
+                            <li className='category-item' key={item.id} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
+                                <div className="category-items" style={{height: getMinHeight}}>
+                                    <Link to={`/movies/${formatTitle(item.name.toLowerCase())}`}>
+                                        <div className='category-imgs'>
+                                            {baza.slice(0, 4).map((movie) => (
+                                                <img
+                                                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                                    alt={movie.title}
+                                                    key={movie.id}
+                                                />
+                                            ))}
+                                            <p>{item.name} <i className="fa-solid fa-arrow-right"></i></p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </li>
                         ))}
 
                     </ul>

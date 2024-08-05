@@ -15,7 +15,6 @@ const InMovies = ({ item, width }) => {
     const [like, setLike] = useState(false);
     const [music, setMusic] = useState(false);
     const [actors, setActors] = useState([]);
-    const [number, setNumber] = useState(1);
     const [reviews, setReviews] = useState([]);
     const [reviewNum, setReviewNum] = useState(1);
     const [trailer, setTrailer] = useState(null);
@@ -80,20 +79,12 @@ const InMovies = ({ item, width }) => {
             fetchMovieTrailer();
         }
     }, [item]);
-
-    useEffect(() => {
-        if (number > 9) {
-            setNumber(1);
-        } else if (number <= 0) {
-            setNumber(9);
-        }
-    }, [number]);
-
+    
     useEffect(() => {
         if (reviewNum > reviews.length - 1) {
             setReviewNum(1);
         } else if (reviewNum < 1) {
-            setReviewNum(reviews.length % 2 === 0 ? reviews.length : reviews.length - 1);
+            setReviewNum(reviews.length - 1);
         }
     }, [reviewNum, reviews.length]);
 
@@ -117,7 +108,7 @@ const InMovies = ({ item, width }) => {
                     <div className="inMovise-left">
                         <InMovieDeck item={item} width={width} selectWidth={selectWidth} />
                         <InMovieMiniInfo item={item} width={width} selectWidth={selectWidth} filterData={filterData} />
-                        <InMovieCast actors={actors} width={width} selectWidth={selectWidth} setNumber={setNumber} number={number} />
+                        <InMovieCast actors={actors} width={width} />
                         <InMovieReviews selectWidth={selectWidth} setReviewNum={setReviewNum} reviewNum={reviewNum} reviews={reviews} width={width} />
 
                     </div>

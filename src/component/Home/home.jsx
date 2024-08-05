@@ -7,11 +7,11 @@ import Questions from './questions/questions'
 import Sub from './sub/sub'
 import Trial from './tralFree/trial'
 import ScrolTop from '../scrolTop/scrolTop'
-const Home = ({data, width}) => {
+const Home = ({data, width, setCount}) => {
   return (
     <div className='home'>
       <ScrolTop/>
-    <Hero data={data}/>
+    <Hero setCount={setCount} data={data}/>
     <Category width={width} baza={data}/>
     <Device/>
     <Questions/>

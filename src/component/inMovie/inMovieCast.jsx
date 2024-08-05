@@ -1,9 +1,66 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 
-const InMovieCast = ({width, selectWidth, setNumber, number, actors}) => {
+const InMovieCast = ({ width, actors }) => {
+    const [number, setNumber] = useState(1);
+    const inMovieCastRef = useRef(null);
+    const [divWidth, setDivWidth] = useState(0);
+
+    useEffect(() => {
+        if (inMovieCastRef.current) {
+            setDivWidth(inMovieCastRef.current.offsetWidth);
+        }
+    }, [width]);
+
+    const ContWidth = width / 100;
+    const selectWidth = (divWidth - 80) / 100;
+    const reviewsWidth = selectWidth * 100;
+
+    const sortCast = actors.filter((item) => item.profile_path != null);
+    const getMinWidth = () => {
+        if (sortCast.length < 9) {
+            if (width >= 1377) return `${reviewsWidth / 5}px`;
+            if (width <= 1376 && width >= 1000) return `${reviewsWidth / 4}px`;
+            if (width <= 1000 && width >= 770) return `${reviewsWidth / 3}px`;
+            if (width <= 770 && width >= 550) return `${reviewsWidth / 2}px`;
+            return `${reviewsWidth / 2}px`;
+
+        } else if (sortCast.length >= 8) {
+            if (width >= 1377) return `${reviewsWidth / 9}px`;
+            if (width <= 1376 && width >= 1000) return `${reviewsWidth / 7}px`;
+            if (width <= 1000 && width >= 770) return `${reviewsWidth / 5}px`;
+            if (width <= 770 && width >= 550) return `${reviewsWidth / 3}px`;
+            return `${reviewsWidth / 2}px`;
+        }
+    };
+
+    const getDataLength = () => {
+        if (sortCast.length < 9) {
+            if (width <= 1920 && width >= 1376) return 5;
+            if (width <= 1376 && width >= 1000) return 4;
+            if (width <= 1000 && width >= 770) return 3;
+            if (width <= 770 && width >= 550) return 2;
+            return 2;
+        } else if (sortCast.length >= 9) {
+            if (width <= 1920 && width >= 1376) return 9;
+            if (width <= 1376 && width >= 1000) return 7;
+            if (width <= 1000 && width >= 770) return 5;
+            if (width <= 770 && width >= 550) return 3;
+            return 2;
+        }
+
+    };
+
+    useEffect(() => {
+        if (number > sortCast.length - getDataLength()) {
+            setNumber(1);
+        } else if (number <=0) {
+            setNumber(sortCast.length - getDataLength());
+        }
+    }, [number, sortCast, getDataLength]);
+
     return (
-        <div className="inMovie-cast" style={{
-            minWidth: width >= 1390 ? 'auto' : `${selectWidth * 90}px`
+        <div className="inMovie-cast" ref={inMovieCastRef} style={{
+            minWidth: width >= 1390 ? 'auto' : `${ContWidth * 90}px`
         }}>
             <div className="cast-top">
                 <h4>Cast</h4>
@@ -13,8 +70,8 @@ const InMovieCast = ({width, selectWidth, setNumber, number, actors}) => {
                 </div>
             </div>
             <div className="actors-list">
-                {actors.slice(0, 20).map(actor => (
-                    <div key={actor.id} className="actor-item" style={{ transform: `translateX(-${number * 100}%)` }}>
+                {sortCast.map((actor, index) => (
+                    <div key={`${actor.id}-${index}`} className="actor-item" style={{ transform: `translateX(-${(number - 1) * 100}%)`, minWidth: getMinWidth(), maxWidth: getMinWidth() }}>
                         <img
                             src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`}
                             alt={actor.name}
@@ -24,7 +81,7 @@ const InMovieCast = ({width, selectWidth, setNumber, number, actors}) => {
                 ))}
             </div>
         </div>
-    )
+    );
 }
 
-export default InMovieCast
+export default InMovieCast;

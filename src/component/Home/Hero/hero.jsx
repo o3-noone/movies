@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './hero.css';
 import icon from './icon.svg';
+import { useNavigate } from 'react-router-dom';
 
-const Hero = ({ data }) => {
+const Hero = ({ data, setCount }) => {
   const [shuffledData, setShuffledData] = useState([]);
-
+const navigate=useNavigate()
   useEffect(() => {
     // Shuffle the data array
     const shuffleArray = (array) => {
@@ -28,7 +29,7 @@ const Hero = ({ data }) => {
             <img
               className='bg-img'
               key={item.id}
-              src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
               alt={item.title}
             />
           ))
@@ -45,7 +46,11 @@ const Hero = ({ data }) => {
         <h3>The Best Streaming Experience</h3>
         <p>StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With StreamVibe, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.</p>
         <div className="hero-btn">
-          <button><i className="fa-solid fa-caret-right"></i>Start Watching Now</button>
+          <button  onClick={() => {
+                            setCount(2);
+                            localStorage.setItem("headerId", 2);
+                            navigate(`/movies`)
+                        }}><i className="fa-solid fa-caret-right"></i>Start Watching Now</button>
         </div>
       </div>
     </>

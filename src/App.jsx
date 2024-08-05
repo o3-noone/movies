@@ -92,7 +92,7 @@ function App() {
       )}
 
       <Routes>
-        <Route path="/" element={<Home width={width} data={data} />} />
+        <Route path="/" element={<Home setCount={setCount} width={width} data={data} />} />
         <Route path="/movies" element={<Movies width={width} data={data} />} />
         {data.map((item) => (
           <Route
