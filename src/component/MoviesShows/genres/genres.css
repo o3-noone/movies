@@ -1,4 +1,8 @@
-.genres{
+.genres-box{
     width: 100%;
+}
+.genres{
     padding-top: 150px;
+color: white;
+padding-bottom: 50px;
 }
