@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, showTrailer, add, like, music}) => {
   return (
     <>
-    {trailer && !showTrailer ? (
+    {!showTrailer ? (
                     <div
                         className='movies-item'
                         style={{

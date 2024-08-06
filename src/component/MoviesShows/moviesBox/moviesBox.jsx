@@ -16,7 +16,7 @@ const MoviesBox = ({ baza, width }) => {
         if (inMovieBox.current) {
             setDivWidth(inMovieBox.current.offsetWidth);
         }
-    }, [width]);
+    }, [baza]);
 
     const key = "46ec25609ba3e9b8903dc225769a8f80";
 

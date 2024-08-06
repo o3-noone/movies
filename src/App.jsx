@@ -66,7 +66,7 @@ function App() {
           await new Promise(resolve => setTimeout(resolve, 1));
         }
 
-        setData(combinedResults.slice(350, 386));
+        setData(combinedResults.slice(0, 5200));
       } catch (error) {
       }
     };

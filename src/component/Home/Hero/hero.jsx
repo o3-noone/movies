@@ -25,7 +25,7 @@ const navigate=useNavigate()
     <>
       <div className='hero-bg'>
         {shuffledData.length > 0 ? (
-          shuffledData.map((item) => (
+          shuffledData.slice(0, 36).map((item) => (
             <img
               className='bg-img'
               key={item.id}

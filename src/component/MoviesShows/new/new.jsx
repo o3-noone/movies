@@ -44,13 +44,14 @@ const New = ({ baza, width }) => {
     }, [baza]);
 
     useEffect(() => {
-        if (number > randomData.slice(0,36).length - getDataLength()) {
+        if (number > randomData.slice(0,20).length - getDataLength()) {
             setNumber(1);
         } else if (number <= 0) {
-            setNumber(randomData.slice(0, 36).length - getDataLength());
+            setNumber(randomData.slice(0, 20).length - getDataLength());
         }
     }, [number]);
-console.log(randomData.length);
+const sortRandData=randomData.slice(0, 20).sort((a, b)=>b.release_date.slice(0, 4)-a.release_date.slice(0, 4))
+console.log(sortRandData);
 
     return (
         <>
@@ -73,7 +74,7 @@ console.log(randomData.length);
             </div>
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {randomData.slice(0, 36).map((item, index) => (
+                    {sortRandData.length>=1? sortRandData.map((item, index) => (
                         <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index+1}>
                             <div className="category-items">
                                 <Link to={`/new/${formatTitle(item.title.toLowerCase())}`}>
@@ -89,7 +90,17 @@ console.log(randomData.length);
                                 </Link>
                             </div>
                         </li>
-                    ))}
+                    )): <>
+                    {[1, 2, 3, 4, 5].map((item, index)=>(
+                         <div class="load" key={index+1} style={{minWidth: getMinWidth()}}>
+                         <div class="wrapper">
+                             <div class="cir"></div>
+                        
+                             <div class="line-4"></div>
+                         </div>
+                     </div>
+                       ))}
+                    </>}
                 </ul>
                 {width <= 770 ? (
                     <>

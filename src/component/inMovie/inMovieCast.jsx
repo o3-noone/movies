@@ -70,7 +70,7 @@ const InMovieCast = ({ width, actors }) => {
                 </div>
             </div>
             <div className="actors-list">
-                {sortCast.map((actor, index) => (
+                {sortCast ? sortCast.map((actor, index) => (
                     <div key={`${actor.id}-${index}`} className="actor-item" style={{ transform: `translateX(-${(number - 1) * 100}%)`, minWidth: getMinWidth(), maxWidth: getMinWidth() }}>
                         <img
                             src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
@@ -78,7 +78,18 @@ const InMovieCast = ({ width, actors }) => {
                             className="actor-image"
                         />
                     </div>
-                ))}
+                )) : <>
+                
+                {[1].map((item, index)=>(
+                         <div class="load" key={index+1} style={{minWidth: getMinWidth()}}>
+                         <div class="wrapper">
+                             <div class="cir"></div>
+                        
+                             <div class="line-4"></div>
+                         </div>
+                     </div>
+                       ))}
+                </>}
             </div>
         </div>
     );

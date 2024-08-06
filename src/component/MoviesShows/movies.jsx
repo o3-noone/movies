@@ -6,7 +6,7 @@ import MoviesBox from './moviesBox/moviesBox';
 
 const Movies = ({ data, width }) => {
   const [count, setCount] = useState(0);
-  const selectData = data.slice(15, 19);
+  const selectData = data.slice(23, 27);
   const handlePrev = () => {
     setCount(prev => (prev - 1 + selectData.length) % selectData.length);
   };
@@ -18,9 +18,16 @@ const Movies = ({ data, width }) => {
       <ScrolTop />
       <div className="movies-hero">
         <div className="movies-list">
-          {selectData.map((item) => (
+          {selectData.length >= 1 ? selectData.map((item) => (
             <MoviesItem key={item.id} item={item} count={count} />
-          ))}
+          )) : <>
+            <div class="load">
+              <div class="wrapper">
+                <div class="cir"></div>
+                <div class="line-4"></div>
+              </div>
+            </div>
+          </>}
         </div>
         <div className="movie-inc-dec">
           <div className="movie-inc" onClick={handlePrev}>
@@ -40,7 +47,7 @@ const Movies = ({ data, width }) => {
           </div>
         </div>
       </div>
-      <MoviesBox width={width} baza={data}/>
+      <MoviesBox width={width} baza={data} />
     </div>
   );
 }

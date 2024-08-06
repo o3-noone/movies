@@ -4,6 +4,7 @@ import "./mustMovie.css"
 
 const MustMovie = ({ width, number, setNumber, baza }) => {
 
+    const defData=baza.slice(0, 20)
     const getDataLength = () => {
         if (width <= 1920 && width >= 1000) return 4;
         if (width <= 999 && width >= 770) return 3;
@@ -12,10 +13,10 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
     };
 
     useEffect(() => {
-        if (number > (baza.length - getDataLength())) {
+        if (number > (defData- getDataLength())) {
             setNumber(1);
         } else if (number <= 0) {
-            setNumber(baza.length - getDataLength());
+            setNumber(defData - getDataLength());
         }
     }, [number, baza]);
 
@@ -42,7 +43,6 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
         return formattedTitle;
     };
-    const defData=baza
     const sortData = defData.sort((a, b) => b.vote_count - a.vote_count)
 
 
@@ -69,7 +69,7 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
 
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {sortData && sortData.map((item, index) => (
+                    {sortData.length>=1 ? sortData.map((item, index) => (
                         <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
                             <div className="category-items">
                                 <Link to={`/trending/${formatTitle(item.title.toLowerCase())}`}>
@@ -86,7 +86,17 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
                                 </Link>
                             </div>
                         </li>
-                    ))}
+                    )): <>
+                    {[1, 2, 3, 4, 5].map((item, index)=>(
+                         <div class="load" key={index+1} style={{minWidth: getMinWidth()}}>
+                         <div class="wrapper">
+                             <div class="cir"></div>
+                        
+                             <div class="line-4"></div>
+                         </div>
+                     </div>
+                       ))}
+                    </>}
                 </ul>
                 {width <= 770 ? (
                     <>

@@ -33,8 +33,8 @@ const OneItem = ({ baza, width }) => {
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
         return formattedTitle;
     };
-    const defBaza=baza.slice(0, 36)
-    const sortBaza=defBaza.sort((a, b) => b.id - a.id)
+    const defBaza = baza.slice(0, 20)
+    const sortBaza = defBaza.sort((a, b) => b.id - a.id)
     useEffect(() => {
         if (number > sortBaza.length - getDataLength()) {
             setNumber(1);
@@ -42,7 +42,7 @@ const OneItem = ({ baza, width }) => {
             setNumber(sortBaza.length - getDataLength());
         }
     }, [number]);
-    
+
     return (
         <>
             <div className="moviesTitle">
@@ -62,8 +62,8 @@ const OneItem = ({ baza, width }) => {
             </div>
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {sortBaza.slice(0, 36).map((item, index) => (
-                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index+1}>
+                    {sortBaza.length >=1 ? sortBaza.map((item, index) => (
+                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index + 1}>
                             <div className="category-items">
                                 <Link to={`/trending/${formatTitle(item.title.toLowerCase())}`}>
                                     <div className='category-imgs movieImg'>
@@ -79,14 +79,24 @@ const OneItem = ({ baza, width }) => {
                                 </Link>
                             </div>
                         </li>
-                    ))}
+                    )) : <>
+                       {[1, 2, 3, 4, 5].map((item, index)=>(
+                         <div class="load" key={index+1} style={{minWidth: getMinWidth()}}>
+                         <div class="wrapper">
+                             <div class="cir"></div>
+                        
+                             <div class="line-4"></div>
+                         </div>
+                     </div>
+                       ))}
+                    </>}
                 </ul>
                 {width <= 770 ? <><div className="dots2">
                     <span className={`dot ${number < 5 ? "dot-active" : ""}`} onClick={() => { setNumber(1) }}></span>
                     <span className={`dot ${number > 4 && number < 9 ? "dot-active" : ""}`} onClick={() => { setNumber(5) }}></span>
                     <span className={`dot ${number > 8 && number < 13 ? "dot-active" : ""}`} onClick={() => { setNumber(9) }}></span>
                     <span className={`dot ${number > 12 ? "dot-active" : ""}`} onClick={() => { setNumber(14) }}></span>
-                
+
                 </div>
                     <button className="dots-inc2" onClick={() => setNumber(prev => prev - 1)}>
                         <i className="fa-solid fa-arrow-left"></i>

@@ -180,7 +180,8 @@ color: grey;
     margin-top: 20px;
 }
 .review-btns{
-    max-width: 250px;
+    min-width: 250px;
+    max-width: 50%;
     height: 50px;
     display: flex;
     align-items: center;

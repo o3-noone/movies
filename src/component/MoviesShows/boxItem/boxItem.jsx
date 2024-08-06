@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./boxItem.css"
 import { Link } from 'react-router-dom';
 const BoxItem = ({ baza, width }) => {
+    const inMovieBox = useRef(null);
     const key = "46ec25609ba3e9b8903dc225769a8f80";
     const [data, setData] = useState([]);
     const [number, setNumber] = useState(1)
+    useEffect(() => {
+        if (inMovieBox.current) {
+            setDivWidth(inMovieBox.current.offsetWidth);
+        }
+    }, [baza]);
     const fetchData = async () => {
         try {
             const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
@@ -37,7 +43,7 @@ const BoxItem = ({ baza, width }) => {
     const reviewsWidth2 = (selectWidth * 90) / 3
     const reviewsWidth3 = (selectWidth * 90) / 2
     const reviewsWidth4 = (selectWidth * 90) / 1
-    
+
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
         if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
@@ -46,7 +52,7 @@ const BoxItem = ({ baza, width }) => {
         if (width <= 770 && width >= 550) return `${reviewsWidth3}px`
         return `${reviewsWidth4}px`;
     };
-    const getMinHeight = getMinWidth().slice(0, -2) -20
+    const getMinHeight = getMinWidth().slice(0, -2) - 20
 
     const formatTitle = (title) => {
         let formattedTitle = title.replace(/[^\w\s]/g, '-');
@@ -74,24 +80,35 @@ const BoxItem = ({ baza, width }) => {
                 </div>
                 <div className="categoryList-box">
                     <ul className="category-list">
-                        {data && data.map((item) => (
-                            <li className='category-item' key={item.id} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
-                                <div className="category-items" style={{height: getMinHeight}}>
-                                    <Link to={`/movies/${formatTitle(item.name.toLowerCase())}`}>
+                        {data.length >= 1 ? data.map((genre, index) => (
+                            <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
+                                <div className="category-items" style={{ height: getMinHeight }}>
+                                    <Link to={`/movies/${formatTitle(genre.name.toLowerCase())}`}>
                                         <div className='category-imgs'>
-                                            {baza.slice(0, 4).map((movie) => (
+                                            {baza.filter(movie => movie.genre_ids.includes(genre.id))
+                                                .slice(0, 4).map((movie) => (
                                                 <img
                                                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                                                     alt={movie.title}
                                                     key={movie.id}
                                                 />
                                             ))}
-                                            <p>{item.name} <i className="fa-solid fa-arrow-right"></i></p>
+                                            <p>{genre.name} <i className="fa-solid fa-arrow-right"></i></p>
                                         </div>
                                     </Link>
                                 </div>
                             </li>
-                        ))}
+                        )) : <>
+                            {[1, 2, 3, 4, 5].map((item, index) => (
+                                <div class="load" key={index + 1} style={{ minWidth: getMinWidth() }}>
+                                    <div class="wrapper">
+                                        <div class="cir"></div>
+
+                                        <div class="line-4"></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </>}
 
                     </ul>
                     {width <= 770 ? <><div className="dots2">
