@@ -73,7 +73,7 @@ const InMovieCast = ({ width, actors }) => {
                 {sortCast.map((actor, index) => (
                     <div key={`${actor.id}-${index}`} className="actor-item" style={{ transform: `translateX(-${(number - 1) * 100}%)`, minWidth: getMinWidth(), maxWidth: getMinWidth() }}>
                         <img
-                            src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`}
+                            src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                             alt={actor.name}
                             className="actor-image"
                         />

@@ -33,9 +33,9 @@
 }
 .movies-title2{
     min-width: 100%;
-    height: 700px;
-    margin-top: -700px;
+    max-height: 700px;
     position: relative;
+    margin-top: -70px;
 }
 .movies-box{
     width: 100%;
@@ -43,6 +43,7 @@
     bottom: 20%;
     text-align: center;
 }
+
 .movie-text>h3{
     font-size: 35px;
     color: white;

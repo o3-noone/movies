@@ -44,12 +44,13 @@ const New = ({ baza, width }) => {
     }, [baza]);
 
     useEffect(() => {
-        if (number > baza.length - getDataLength()) {
+        if (number > randomData.slice(0,36).length - getDataLength()) {
             setNumber(1);
         } else if (number <= 0) {
-            setNumber(baza.length - getDataLength());
+            setNumber(randomData.slice(0, 36).length - getDataLength());
         }
     }, [number]);
+console.log(randomData.length);
 
     return (
         <>
@@ -72,13 +73,13 @@ const New = ({ baza, width }) => {
             </div>
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {randomData.map((item) => (
-                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={item.id}>
+                    {randomData.slice(0, 36).map((item, index) => (
+                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index+1}>
                             <div className="category-items">
                                 <Link to={`/new/${formatTitle(item.title.toLowerCase())}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
-                                            src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                                            src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                                             alt={item.title}
                                         />
                                         <div className="filmtext">

@@ -26,13 +26,6 @@ const OneItem = ({ baza, width }) => {
     }
 
 
-    useEffect(() => {
-        if (number > baza.length - getDataLength()) {
-            setNumber(1);
-        } else if (number <= 0) {
-            setNumber(baza.length - getDataLength());
-        }
-    }, [number]);
     const formatTitle = (title) => {
         let formattedTitle = title.replace(/[^\w\s]/g, '-');
         formattedTitle = formattedTitle.replace(/-+/g, '-');
@@ -40,8 +33,15 @@ const OneItem = ({ baza, width }) => {
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
         return formattedTitle;
     };
-    const defBaza=baza
+    const defBaza=baza.slice(0, 36)
     const sortBaza=defBaza.sort((a, b) => b.id - a.id)
+    useEffect(() => {
+        if (number > sortBaza.length - getDataLength()) {
+            setNumber(1);
+        } else if (number <= 0) {
+            setNumber(sortBaza.length - getDataLength());
+        }
+    }, [number]);
     
     return (
         <>
@@ -62,13 +62,13 @@ const OneItem = ({ baza, width }) => {
             </div>
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {sortBaza.map((item) => (
-                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={item.id}>
+                    {sortBaza.slice(0, 36).map((item, index) => (
+                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index+1}>
                             <div className="category-items">
                                 <Link to={`/trending/${formatTitle(item.title.toLowerCase())}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
-                                            src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                                            src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                                             alt={item.title}
                                         />
                                         <div className="filmtext">

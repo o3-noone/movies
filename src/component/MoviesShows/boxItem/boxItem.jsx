@@ -81,7 +81,7 @@ const BoxItem = ({ baza, width }) => {
                                         <div className='category-imgs'>
                                             {baza.slice(0, 4).map((movie) => (
                                                 <img
-                                                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                                                     alt={movie.title}
                                                     key={movie.id}
                                                 />

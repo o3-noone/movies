@@ -12,18 +12,18 @@ function App() {
   const key = "46ec25609ba3e9b8903dc225769a8f80";
   const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
-  const [list, setList]=useState([])
+  const [list, setList] = useState([])
   const fetchData = async () => {
-      try {
-          const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
-          const result = await response.json();
-          setList(result.genres);
-      } catch (error) {
-      }
+    try {
+      const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
+      const result = await response.json();
+      setList(result.genres);
+    } catch (error) {
+    }
   };
 
   useEffect(() => {
-      fetchData();
+    fetchData();
   }, []);
   // Header kengligini olish uchun hooklar
   const headerRef = useRef(null);
@@ -58,15 +58,15 @@ function App() {
       let combinedResults = [];
 
       try {
-        for (let page = 1; page <= 2; page++) {
+        for (let page = 1; page <= 300; page++) {
           const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`);
           const data = await response.json();
           combinedResults = [...combinedResults, ...data.results];
 
-          await new Promise(resolve => setTimeout(resolve, 200));
+          await new Promise(resolve => setTimeout(resolve, 1));
         }
 
-        setData(combinedResults.slice(0, 36));
+        setData(combinedResults.slice(350, 386));
       } catch (error) {
       }
     };
@@ -94,30 +94,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setCount={setCount} width={width} data={data} />} />
         <Route path="/movies" element={<Movies width={width} data={data} />} />
-        {data.map((item) => (
+        {data.map((item, index) => (
           <Route
-            key={item.id}
+            key={index+1}
             path={`/movies/${formatTitle(item.title)}`}
             element={<InMovies width={width} item={item} />}
           />
         ))}
-        {data.map((item) => (
+        {data.map((item, index) => (
           <Route
-            key={item.id}
+            key={index+1}
             path={`/new/${formatTitle(item.title)}`}
             element={<InMovies width={width} item={item} />}
           />
         ))}
-    {list.map((item) => (
+        {list.map((item, index) => (
           <Route
-            key={item.id}
-            path={`/new/${formatTitle(item.name)}`}
+            key={index+1}
+            path={`/genres/${formatTitle(item.name)}`}
             element={<div>Page not found</div>}
           />
         ))}
-        {data.map((item) => (
+        {data.map((item, index) => (
           <Route
-            key={item.id}
+            key={index+1}
             path={`/trending/${formatTitle(item.title)}`}
             element={<InMovies width={width} item={item} />}
           />

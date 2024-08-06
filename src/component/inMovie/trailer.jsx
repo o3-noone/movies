@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, showTrailer, add, like, music}) => {
-    const  [play ,setPlay] =useState(true)
   return (
     <>
     {trailer && !showTrailer ? (
@@ -57,15 +56,15 @@ const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, show
                 ) : (
                     <div className="movies-item">
                         {trailer && (
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                src={`https://www.youtube.com/embed/${trailer.key}?autoplay=${play ? 0 : 1}&controls=0${music ? "&mute=1" : "&mute=0"}&vq=hd1080`}
-                                title="Trailer"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
+                           <iframe
+                           width="100%"
+                           height="100%"
+                           src={`https://www.youtube.com/embed/${trailer.key}?autoplay=0&controls=0${music ? "&mute=1" : "&mute=0"}&vq=hd1080`}
+                           title="Trailer"
+                           frameBorder="0"
+                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                           allowFullScreen
+                         ></iframe>
                         )}
 
                         <div className="movies-title2">
@@ -81,13 +80,7 @@ const Trailer = ({setAdd, setLike, setMusic, setShowTrailer, item, trailer, show
                                     >
                                         {showTrailer ? 'Close Trailer' : 'Play Now'}
                                     </button>
-                                    <button
-                                        className='movie-btn'
-                                        onClick={() => setPlay(!play)}
-                                        aria-label={play ? "Puse" : "Resume"}
-                                    >
-                                        {play ? <i className="fa-solid fa-play"></i> : <i className="fa-solid fa-pause"></i>}
-                                    </button>
+                                  
                                     <button
                                         className='movie-btn'
                                         onClick={() => setAdd(!add)}

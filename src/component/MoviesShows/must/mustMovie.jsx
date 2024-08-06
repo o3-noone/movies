@@ -69,13 +69,13 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
 
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {sortData && sortData.map((item) => (
-                        <li className='category-item' key={item.id} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
+                    {sortData && sortData.map((item, index) => (
+                        <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
                             <div className="category-items">
                                 <Link to={`/trending/${formatTitle(item.title.toLowerCase())}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
-                                            src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                                            src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                                             alt={item.title}
                                         />
                                         <div className="filmtext">

@@ -98,7 +98,9 @@ const InMovies = ({ item, width }) => {
     if (!item) {
         return <div>Loading...</div>;
     }
+    
     const selectWidth = width / 100
+    
     return (
         <>
             <div className="inMovie">
