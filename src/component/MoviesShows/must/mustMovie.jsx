@@ -41,7 +41,7 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
         formattedTitle = formattedTitle.replace(/-+/g, '-');
         formattedTitle = formattedTitle.replace(/\s+/g, '-');
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-        return formattedTitle;
+        return formattedTitle.toLowerCase();
     };
     const sortData = defData.sort((a, b) => b.vote_count - a.vote_count)
 
@@ -72,7 +72,7 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
                     {sortData.length>=1 ? sortData.map((item, index) => (
                         <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
                             <div className="category-items">
-                                <Link to={`/trending/${formatTitle(item.title.toLowerCase())}`}>
+                                <Link to={`/movies/${formatTitle(item.title)}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}

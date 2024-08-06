@@ -9,8 +9,9 @@ import InMovieCast from './inMovieCast';
 import InMovieMiniInfo from './inMovieMiniInfo';
 import InMovieReviews from './inMovieReviews';
 import InMovieInfo from './inMovieInfo';
+import { Link } from 'react-router-dom';
 
-const InMovies = ({ item, width }) => {
+const InMovies = ({ item, width, listItem }) => {
     const [add, setAdd] = useState(false);
     const [like, setLike] = useState(false);
     const [music, setMusic] = useState(false);
@@ -71,7 +72,7 @@ const InMovies = ({ item, width }) => {
             setTrailer(trailerData);
         } catch (error) {
         }
-    }; 
+    };
     useEffect(() => {
         if (item?.id) {
             fetchMovieCredits();
@@ -79,7 +80,7 @@ const InMovies = ({ item, width }) => {
             fetchMovieTrailer();
         }
     }, [item]);
-    
+
     useEffect(() => {
         if (reviewNum > reviews.length - 1) {
             setReviewNum(1);
@@ -88,23 +89,43 @@ const InMovies = ({ item, width }) => {
         }
     }, [reviewNum, reviews.length]);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setReviewNum(prevReviewNum => (prevReviewNum % (reviews.length - 1)) + 1);
-    //     }, 10000);
-    //     return () => clearInterval(interval);
-    // }, [reviews.length]);
-
     if (!item) {
         return <div>Loading...</div>;
     }
-    
+
     const selectWidth = width / 100
+
+    const formatTitle = (title) => {
+        let formattedTitle = title.replace(/[^\w\s]/g, '-');
+        formattedTitle = formattedTitle.replace(/-+/g, '-');
+        formattedTitle = formattedTitle.replace(/\s+/g, '-');
+        formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
+        return formattedTitle.toLowerCase();
+    };
     
     return (
         <>
             <div className="inMovie">
                 <ScrolTop />
+                <div className="InMovie-header">
+                    <ul className="inMovie-headerList">
+                        <li className="inMovie-headerItem">
+                            <Link to={`/`}>
+                                Home
+                            </Link>
+                        </li>/
+                        <li className="inMovie-headerItem">
+                            <Link to={`/movies/${formatTitle(listItem.name)}`}>
+                               Genres: {listItem.name}
+                            </Link>
+                        </li>/
+                        <li className="inMovie-headerItem">
+                            <Link to={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}`}>
+                              Film name:  {item.title}
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
                 <Trailer item={item} add={add} like={like} music={music} setAdd={setAdd} setLike={setLike} setMusic={setMusic} setShowTrailer={setShowTrailer} showTrailer={showTrailer} trailer={trailer} />
                 <div className="inMovies-text">
                     <div className="inMovise-left">
@@ -114,7 +135,7 @@ const InMovies = ({ item, width }) => {
                         <InMovieReviews selectWidth={selectWidth} setReviewNum={setReviewNum} reviewNum={reviewNum} reviews={reviews} width={width} />
 
                     </div>
-                    <InMovieInfo item={item} width={width} filterData={filterData}/>
+                    <InMovieInfo item={item} width={width} filterData={filterData} />
                 </div>
             </div>
             <Trial />

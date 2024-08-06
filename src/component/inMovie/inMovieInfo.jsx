@@ -23,20 +23,11 @@ const InMovieInfo = ({ item, width, filterData }) => {
                                 </div>
                                 <div className="span-rating">
                                     <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
-                                    {item.vote_average - 1.76
-                                    }
-                                </div>
-                            </span>
-                            <span>
-                                <div className="span-text">
-                                    Streamvibe
-                                </div>
-                                <div className="span-rating">
-                                    <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
                                     {item.vote_average
                                     }
                                 </div>
                             </span>
+                           
                         </div>
                     </div>
                     <div className="inMovie-info-text">

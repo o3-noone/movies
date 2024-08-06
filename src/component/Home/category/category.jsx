@@ -88,11 +88,11 @@ const Category = ({ baza, width }) => {
                                     {baza
                                         .filter(movie => movie.genre_ids.includes(genre.id))
                                         .slice(0, 4)
-                                        .map(movie => (
+                                        .map((movie, index) => (
                                             <img
                                                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                                 alt={movie.title}
-                                                key={movie.id}
+                                                key={index+1}
                                             />
                                         ))
                                     }

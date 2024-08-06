@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Movies from './component/MoviesShows/movies';
 import HeaderMobile from './component/header/headerMobile';
 import InMovies from './component/inMovie/inMovies';
+import Genres from './component/MoviesShows/genres/genres';
 
 function App() {
   const key = "46ec25609ba3e9b8903dc225769a8f80";
@@ -79,7 +80,7 @@ function App() {
     formattedTitle = formattedTitle.replace(/-+/g, '-');
     formattedTitle = formattedTitle.replace(/\s+/g, '-');
     formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-    return formattedTitle.toLowerCase(); // Ensure all titles are in lowercase
+    return formattedTitle.toLowerCase(); 
   };
 
 
@@ -94,33 +95,40 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setCount={setCount} width={width} data={data} />} />
         <Route path="/movies" element={<Movies width={width} data={data} />} />
-        {data.map((item, index) => (
-          <Route
-            key={index+1}
-            path={`/movies/${formatTitle(item.title)}`}
-            element={<InMovies width={width} item={item} />}
-          />
-        ))}
-        {data.map((item, index) => (
-          <Route
-            key={index+1}
-            path={`/new/${formatTitle(item.title)}`}
-            element={<InMovies width={width} item={item} />}
-          />
+         {data.map((item, index) => (
+          list.map((listItem, listIndex) => {
+            if (item.genre_ids.includes(listItem.id)) {
+              return (
+                <Route
+                  key={`${index}-${listIndex}`}
+                  path={`/movies/${formatTitle(item.title)}`}
+                  element={<InMovies listItem={listItem} width={width} item={item}/>}
+                />
+              );
+            }
+            return null;
+          })
         ))}
         {list.map((item, index) => (
           <Route
-            key={index+1}
-            path={`/genres/${formatTitle(item.name)}`}
-            element={<div>Page not found</div>}
+            key={index + 1}
+            path={`/movies/${formatTitle(item.name)}`}
+            element={<Genres item={item}/>}
           />
         ))}
         {data.map((item, index) => (
-          <Route
-            key={index+1}
-            path={`/trending/${formatTitle(item.title)}`}
-            element={<InMovies width={width} item={item} />}
-          />
+          list.map((listItem, listIndex) => {
+            if (item.genre_ids.includes(listItem.id)) {
+              return (
+                <Route
+                  key={`${index}-${listIndex}`}
+                  path={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}`}
+                  element={<InMovies listItem={listItem} width={width} item={item}/>}
+                />
+              );
+            }
+            return null;
+          })
         ))}
         <Route path="*" element={<div>Page not found</div>} /> {/* Fallback route */}
       </Routes>

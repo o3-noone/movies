@@ -59,7 +59,7 @@ const BoxItem = ({ baza, width }) => {
         formattedTitle = formattedTitle.replace(/-+/g, '-');
         formattedTitle = formattedTitle.replace(/\s+/g, '-');
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-        return formattedTitle;
+        return formattedTitle.toLowerCase();
     };
 
     return (
@@ -83,7 +83,7 @@ const BoxItem = ({ baza, width }) => {
                         {data.length >= 1 ? data.map((genre, index) => (
                             <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
                                 <div className="category-items" style={{ height: getMinHeight }}>
-                                    <Link to={`/movies/${formatTitle(genre.name.toLowerCase())}`}>
+                                    <Link to={`/movies/${formatTitle(genre.name)}`}>
                                         <div className='category-imgs'>
                                             {baza.filter(movie => movie.genre_ids.includes(genre.id))
                                                 .slice(0, 4).map((movie) => (

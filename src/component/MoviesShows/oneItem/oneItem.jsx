@@ -31,7 +31,7 @@ const OneItem = ({ baza, width }) => {
         formattedTitle = formattedTitle.replace(/-+/g, '-');
         formattedTitle = formattedTitle.replace(/\s+/g, '-');
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-        return formattedTitle;
+        return formattedTitle.toLowerCase();
     };
     const defBaza = baza.slice(0, 20)
     const sortBaza = defBaza.sort((a, b) => b.id - a.id)
@@ -65,7 +65,7 @@ const OneItem = ({ baza, width }) => {
                     {sortBaza.length >=1 ? sortBaza.map((item, index) => (
                         <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index + 1}>
                             <div className="category-items">
-                                <Link to={`/trending/${formatTitle(item.title.toLowerCase())}`}>
+                                <Link to={`/movies/${formatTitle(item.title)}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}

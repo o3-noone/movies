@@ -22,13 +22,13 @@ const CategoryItem = ({ item, baza, count, width }) => {
         formattedTitle = formattedTitle.replace(/-+/g, '-');
         formattedTitle = formattedTitle.replace(/\s+/g, '-');
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-        return formattedTitle;
+        return formattedTitle.toLowerCase();
     };
 
     return (
         <li className='category-item' style={{ transform: `translateX(-${(count - 1) * 100}% )`, minWidth: getMinWidth() }}>
             <div className="category-items">
-                <Link to={`/movies/${formatTitle(item.name.toLowerCase())}`}>
+                <Link to={`/movies/${formatTitle(item.name)}`}>
                     <div className='category-imgs'>
                         {baza.slice(0, 4).map((movie) => (
                             <img
