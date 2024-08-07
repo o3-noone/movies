@@ -95,27 +95,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setCount={setCount} width={width} data={data} />} />
         <Route path="/movies" element={<Movies width={width} data={data} />} />
+        
         {data.map((item, index) => (
           list.map((listItem, listIndex) => {
             if (item.genre_ids.includes(listItem.id)) {
               return (
                 <Route
                   key={`${index}-${listIndex}`}
-                  path={`/movies/genres/${formatTitle(item.title)}`}
-                  element={<InMovies listItem={listItem} width={width} item={item} />}
-                />
-              );
-            }
-            return null;
-          })
-        ))}
-        {data.map((item, index) => (
-          list.map((listItem, listIndex) => {
-            if (item.genre_ids.includes(listItem.id)) {
-              return (
-                <Route
-                  key={`${index}-${listIndex}`}
-                  path={`/movies/${formatTitle(item.title)}`}
+                  path={`/movies/${formatTitle(item.title)}/${item.id}`}
                   element={<InMovies listItem={listItem} width={width} item={item} />}
                 />
               );
@@ -139,7 +126,7 @@ function App() {
               return (
                 <Route
                   key={`${index}-${listIndex}`}
-                  path={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}`}
+                  path={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}/${item.id}`}
                   element={<InMovies listItem={listItem} width={width} item={item} />}
                 />
               );

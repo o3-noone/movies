@@ -76,7 +76,7 @@ const sortRandData=randomData.slice(0, 20).sort((a, b)=>b.release_date.slice(0, 
                     {sortRandData.length>=1? sortRandData.map((item, index) => (
                         <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index+1}>
                             <div className="category-items">
-                                <Link to={`/movies/${formatTitle(item.title)}`}>
+                                <Link to={`/movies/${formatTitle(item.title)}/${item.id}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}

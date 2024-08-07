@@ -31,7 +31,7 @@ const MoviesItem = ({ item, count }) => {
                             </div>
                             <div className="movie-btns">
                                 <button className="movie-play" onClick={() => {
-                                    navigate(`/movies/${formatTitle(item.title.toLowerCase())}`)
+                                    navigate(`/movies/${formatTitle(item.title.toLowerCase())}/${item.id}`)
                                 }} aria-label="Play Now">Play Now</button>
                                 <button
                                     className='movie-btn'

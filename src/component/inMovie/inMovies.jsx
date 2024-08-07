@@ -120,7 +120,7 @@ const InMovies = ({ item, width, listItem }) => {
                             </Link>
                         </li>/
                         <li className="inMovie-headerItem">
-                            <Link to={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}`}>
+                            <Link to={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}/${item.id}`}>
                               Film name:  {item.title}
                             </Link>
                         </li>

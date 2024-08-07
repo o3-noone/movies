@@ -49,7 +49,7 @@ const Genres = ({ item, data, width }) => {
                             </Link>
                         </li>/
                         <li className="inMovie-headerItem">
-                            <Link to={`/movies/${formatTitle(item.name)}`}>
+                            <Link to={`/movies/${formatTitle(item.name)}/${item.id}`}>
                                 Genres: {item.name}
                             </Link>
                         </li>

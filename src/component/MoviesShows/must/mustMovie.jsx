@@ -72,7 +72,7 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
                     {sortData.length>=1 ? sortData.map((item, index) => (
                         <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
                             <div className="category-items">
-                                <Link to={`/movies/${formatTitle(item.title)}`}>
+                                <Link to={`/movies/${formatTitle(item.title)}/${item.id}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}

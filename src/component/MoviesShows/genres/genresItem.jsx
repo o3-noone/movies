@@ -5,7 +5,7 @@ const GenresItem = ({ item, film, formatTitle }) => {
     return (
         <li className='genres-item'>
             <div className="genres-items">
-                <Link to={`/movies/${item.name.toLowerCase()}/${formatTitle(film.title)}`}>
+                <Link to={`/movies/${item.name.toLowerCase()}/${formatTitle(film.title)}/${film.id}`}>
                     <div className='category-imgs movieImg'>
                         <img
                             src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}

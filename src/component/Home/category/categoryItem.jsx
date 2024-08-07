@@ -28,7 +28,7 @@ const CategoryItem = ({ item, baza, count, width }) => {
     return (
         <li className='category-item' style={{ transform: `translateX(-${(count - 1) * 100}% )`, minWidth: getMinWidth() }}>
             <div className="category-items">
-                <Link to={`/movies/${formatTitle(item.name)}`}>
+                <Link to={`/movies/${formatTitle(item.name)}/${item.id}`}>
                     <div className='category-imgs'>
                         {baza.slice(0, 4).map((movie) => (
                             <img

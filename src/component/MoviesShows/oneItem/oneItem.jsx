@@ -65,7 +65,7 @@ const OneItem = ({ baza, width }) => {
                     {sortBaza.length >=1 ? sortBaza.map((item, index) => (
                         <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index + 1}>
                             <div className="category-items">
-                                <Link to={`/movies/${formatTitle(item.title)}`}>
+                                <Link to={`/movies/${formatTitle(item.title)}/${item.id}`}>
                                     <div className='category-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
