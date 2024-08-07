@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./genres.css";
 import { Link } from 'react-router-dom';
 import GenresItem from './genresItem';
@@ -36,7 +36,13 @@ const Genres = ({ item, data, width }) => {
             setPage(Math.ceil(data.length / itemsPerPage));
         }
     }, [data]);
-
+    const inGenresRef = useRef(null)
+    const [divWidth, setDivWidth] = useState(0)
+    useEffect(() => {
+        if (inGenresRef.current) {
+            setDivWidth(inGenresRef.current.offsetWidth);
+        }
+    }, [data]);
     return (
         <div className='p4 genres-box'>
             <ScrolTop />
@@ -65,9 +71,9 @@ const Genres = ({ item, data, width }) => {
                         />
                         <button onClick={() => handlePageChange(page + 1)}>+</button>
                     </div>
-                    <ul className="genres-list">
+                    <ul className="genres-list" ref={inGenresRef}>
                         {filteredData.length >= 1 ? filteredData.map((film, index) => (
-                            <GenresItem key={index + 1} item={item} film={film} formatTitle={formatTitle} />
+                            <GenresItem divWidth={divWidth} key={index + 1} item={item} film={film} formatTitle={formatTitle} />
                         )) : <>
                             {[1, 2, 3, 4, 5].map((item, index) => (
                                 <div className="load" key={index + 1}>

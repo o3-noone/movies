@@ -38,7 +38,7 @@ const MoviesBox = ({ baza, width }) => {
         if (width <= 1920 && width >= 1000) return 4;
         if (width <= 999 && width >= 770) return 3;
         if (width <= 769 && width >= 550) return 2;
-        return 0;
+        return 1;
     };
 
     useEffect(() => {

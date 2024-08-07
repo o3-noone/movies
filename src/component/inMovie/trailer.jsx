@@ -70,7 +70,7 @@ const Trailer = ({ setAdd, setLike, setMusic, setShowTrailer, item, trailer, sho
                         <iframe
                             width="100%"
                             height="100%"
-                            src={`https://www.youtube.com/embed/${trailer.key}?autoplay=0&controls=0${music ? "&mute=1" : "&mute=0"}&vq=hd1080`}
+                            src={`https://www.youtube.com/embed/${trailer.key}?autoplay=0&controls=1${music ? "&mute=1" : "&mute=0"}&vq=hd1080`}
                             title="Trailer"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

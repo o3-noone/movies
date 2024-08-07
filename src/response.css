@@ -222,6 +222,14 @@
     .dots{
         margin-left: 0;
     }
+    .movies-item{
+        height: 500px;
+        background-size: contain;
+    }
+    .movies-title{
+        min-height: 500px;
+    }
+
 }
 
 @media (max-width: 786px) {
@@ -273,6 +281,10 @@
     .inMovie-infoMax{
         grid-template-columns: auto;
     }
+    .category-item{
+        padding: 2px;
+    }
+
 }
 @media (max-width: 500px) {
 

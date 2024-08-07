@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./movies.css";
 import MoviesItem from './moviesItem';
 import ScrolTop from '../scrolTop/scrolTop';
@@ -6,13 +6,27 @@ import MoviesBox from './moviesBox/moviesBox';
 
 const Movies = ({ data, width }) => {
   const [count, setCount] = useState(0);
-  const selectData = data.slice(23, 27);
+  const [randomNumber, setRandomNumber] = useState(null);
+  
+  useEffect(() => {
+    const generateRandomNumber = () => {
+      const number = Math.floor(Math.random() * (data.length - 10 + 1)) + 10;
+      setRandomNumber(number);
+    };
+
+    generateRandomNumber();
+  }, [data.length]);
+
+  const selectData = randomNumber !== null ? data.slice(Math.max(randomNumber - 4, 0), randomNumber) : [];
+
   const handlePrev = () => {
     setCount(prev => (prev - 1 + selectData.length) % selectData.length);
   };
+
   const handleNext = () => {
     setCount(prev => (prev + 1) % selectData.length);
   };
+
   return (
     <div className='movies-container p4'>
       <ScrolTop />
@@ -20,14 +34,14 @@ const Movies = ({ data, width }) => {
         <div className="movies-list">
           {selectData.length >= 1 ? selectData.map((item) => (
             <MoviesItem key={item.id} item={item} count={count} />
-          )) : <>
+          )) : (
             <div className="load">
               <div className="wrapper">
                 <div className="cir"></div>
                 <div className="line-4"></div>
               </div>
             </div>
-          </>}
+          )}
         </div>
         <div className="movie-inc-dec">
           <div className="movie-inc" onClick={handlePrev}>

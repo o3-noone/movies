@@ -14,9 +14,9 @@ padding-bottom: 50px;
 
 .genres-list{
     width: 100%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .genresText{
     width: 100%;
@@ -36,14 +36,14 @@ padding-bottom: 50px;
     background-color: transparent;
     transition: transform 0.5s ease-in-out;
     transform: translateX(0);
+    margin: 0;
 }
 .genres-items{
-    width: 200px;
     position: relative;
     background-color: rgb(16, 16, 16);
     border: 1px solid rgb(74, 74, 74);
     border-radius: 10px;
-    margin: 0;
+    /* margin: 0; */
 }
 .genres-items>a{
     color: white;
@@ -76,10 +76,6 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* Hide spin buttons in Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-}
 .genres-pages>button{
     width: 40px;
     height: 40px;
