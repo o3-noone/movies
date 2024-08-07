@@ -117,6 +117,20 @@ function App() {
               return null;
             })
           ))}
+             {data.map((item, index) => (
+            list.map((listItem, listIndex) => {
+              if (item.genre_ids.includes(listItem.id)) {
+                return (
+                  <Route
+                    key={`${index}-${listIndex}`}
+                    path={`/movies/${formatTitle(item.title)}/${item.id}`}
+                    element={<InMovies listItem={listItem} width={width} item={item} />}
+                  />
+                );
+              }
+              return null;
+            })
+          ))}
           <Route path="*" element={<div>Page not found</div>} />
         </Routes>
       )}
