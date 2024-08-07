@@ -21,7 +21,7 @@ const Category = ({ baza, width }) => {
     const reviewsWidth = (selectWidth * 90) / 5
     const reviewsWidth2 = (selectWidth * 90) / 4
     const reviewsWidth3 = (selectWidth * 90) / 3
-    const reviewsWidth4 = (selectWidth * 90) / 2
+    const reviewsWidth4 = (selectWidth * 90) / 1
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
         if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
@@ -42,7 +42,7 @@ const Category = ({ baza, width }) => {
         if (width <= 1920 && width >= 1000) return 4;
         if (width <= 999 && width >= 770) return 3;
         if (width <= 769 && width >= 550) return 2
-        return 1
+        return 0
     }
 
 

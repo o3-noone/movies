@@ -9,7 +9,6 @@ padding-bottom: 50px;
 .genres-listBox{
     width: 100%;
     padding: 70px 0;
-    margin-top: 50px;
     position: relative;
 }
 
@@ -48,4 +47,47 @@ padding-bottom: 50px;
 }
 .genres-items>a{
     color: white;
+}
+.genres-pages{
+    width: 150px;
+    display: flex;
+    position: fixed;
+    z-index: 99;
+    right: 5%;
+    top: 25%;
+    background-color: black;
+    border: 1px solid #323232;
+    padding: 5px;
+    border-radius: 7px;
+}
+.genres-pages>input{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    background-color: #323232;
+    color: white;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide spin buttons in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.genres-pages>button{
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: #121212;
+    color: white;
+    font-size: 20px;
 }

@@ -8,12 +8,17 @@ import Movies from './component/MoviesShows/movies';
 import HeaderMobile from './component/header/headerMobile';
 import InMovies from './component/inMovie/inMovies';
 import Genres from './component/MoviesShows/genres/genres';
+import Loading from './component/loading/loading';
 
 function App() {
   const key = "46ec25609ba3e9b8903dc225769a8f80";
   const [data, setData] = useState([]);
+  const [list, setList] = useState([]);
+  const [lengthData, setLengthData] = useState(0);
   const [count, setCount] = useState(1);
-  const [list, setList] = useState([])
+  const [width, setWidth] = useState(window.innerWidth);
+  const headerRef = useRef(null);
+
   const fetchData = async () => {
     try {
       const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
@@ -26,9 +31,28 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-  // Header kengligini olish uchun hooklar
-  const headerRef = useRef(null);
-  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      let combinedResults = [];
+      let itemsFetched = 0;
+
+      try {
+        for (let page = 1; page <= 500; page++) {
+          const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`);
+          const data = await response.json();
+          combinedResults = [...combinedResults, ...data.results];
+          itemsFetched += data.results.length;
+          setLengthData(itemsFetched);
+          await new Promise(resolve => setTimeout(resolve, 1));
+        }
+        setData(combinedResults.slice(0, 10000));
+      } catch (error) {
+      }
+    };
+
+    fetchMovies();
+  }, [key]);
 
   useEffect(() => {
     const updateWidth = () => {
@@ -37,8 +61,8 @@ function App() {
       }
     };
 
-    updateWidth(); // Komponent yuklanganida kenglikni o'lchash
-    window.addEventListener('resize', updateWidth); // Ekran o'lchamlarining o'zgarishini kuzatish
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
 
     return () => {
       window.removeEventListener('resize', updateWidth);
@@ -47,42 +71,16 @@ function App() {
 
   useEffect(() => {
     const headerId = localStorage.getItem("headerId");
-    if (headerId) {
-      setCount(Number(headerId));
-    } else {
-      setCount(1);
-    }
+    setCount(headerId ? Number(headerId) : 1);
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let combinedResults = [];
-
-      try {
-        for (let page = 1; page <= 400; page++) {
-          const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`);
-          const data = await response.json();
-          combinedResults = [...combinedResults, ...data.results];
-
-          await new Promise(resolve => setTimeout(resolve, 1));
-        }
-
-        setData(combinedResults.slice(0, 5600));
-      } catch (error) {
-      }
-    };
-
-    fetchData();
-  }, [key]);
-
   const formatTitle = (title) => {
-    let formattedTitle = title.replace(/[^\w\s]/g, '-');
-    formattedTitle = formattedTitle.replace(/-+/g, '-');
-    formattedTitle = formattedTitle.replace(/\s+/g, '-');
-    formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-    return formattedTitle.toLowerCase();
+    return title.replace(/[^\w\s]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/\s+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .toLowerCase();
   };
-
 
   return (
     <div className="container" ref={headerRef}>
@@ -91,51 +89,37 @@ function App() {
       ) : (
         <HeaderMobile count={count} setCount={setCount} />
       )}
-
-      <Routes>
-        <Route path="/" element={<Home setCount={setCount} width={width} data={data} />} />
-        <Route path="/movies" element={<Movies width={width} data={data} />} />
-        
-        {data.map((item, index) => (
-          list.map((listItem, listIndex) => {
-            if (item.genre_ids.includes(listItem.id)) {
-              return (
-                <Route
-                  key={`${index}-${listIndex}`}
-                  path={`/movies/${formatTitle(item.title)}/${item.id}`}
-                  element={<InMovies listItem={listItem} width={width} item={item} />}
-                />
-              );
-            }
-            return null;
-          })
-        ))}
-        {list.map((item, index) => {
-          const filteredData = data.filter(movie => movie.genre_ids.includes(item.id));
-          return (
-            <Route
-              key={index + 1}
-              path={`/movies/${formatTitle(item.name)}`}
-              element={<Genres width={width} data={filteredData} item={item} />}
-            />
-          );
-        })}
-        {data.map((item, index) => (
-          list.map((listItem, listIndex) => {
-            if (item.genre_ids.includes(listItem.id)) {
-              return (
-                <Route
-                  key={`${index}-${listIndex}`}
-                  path={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}/${item.id}`}
-                  element={<InMovies listItem={listItem} width={width} item={item} />}
-                />
-              );
-            }
-            return null;
-          })
-        ))}
-        <Route path="*" element={<div>Page not found</div>} /> {/* Fallback route */}
-      </Routes>
+      {data.length === 0 ? <Loading dataLength={lengthData} /> : (
+        <Routes>
+          <Route path="/" element={<Home setCount={setCount} width={width} data={data} />} />
+          <Route path="/movies" element={<Movies width={width} data={data} />} />
+          {list.map((listItem, listIndex) => {
+            const filteredData = data.filter(movie => movie.genre_ids.includes(listItem.id));
+            return (
+              <Route
+                key={listIndex}
+                path={`/movies/${formatTitle(listItem.name)}`}
+                element={<Genres width={width} data={filteredData} item={listItem} />}
+              />
+            );
+          })}
+          {data.map((item, index) => (
+            list.map((listItem, listIndex) => {
+              if (item.genre_ids.includes(listItem.id)) {
+                return (
+                  <Route
+                    key={`${index}-${listIndex}`}
+                    path={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}/${item.id}`}
+                    element={<InMovies listItem={listItem} width={width} item={item} />}
+                  />
+                );
+              }
+              return null;
+            })
+          ))}
+          <Route path="*" element={<div>Page not found</div>} />
+        </Routes>
+      )}
       <Footer setCount={setCount} />
     </div>
   );

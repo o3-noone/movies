@@ -52,15 +52,7 @@
 
 
 }
-.reviews-item{
-    min-width: 410px;
-    height: 400px;
 
-}
-.review-item{
-    height: 350px;
-
-}
 }
 
 
@@ -171,7 +163,7 @@
     .question-top>p {
         width: 100%;
     }
-    .movie-text{
+    .movie-text>p{
         display: none;
     }
 
@@ -281,9 +273,6 @@
     .inMovie-infoMax{
         grid-template-columns: auto;
     }
-    .reviews-item{
-        min-width: 380px;
-    }
 }
 @media (max-width: 500px) {
 
@@ -317,11 +306,7 @@
     .sub-item {
         min-height: 350px;
     }
-    .reviews-item{
-        height: 600px;
-    }.review-item{
-        height: 550px;
-    }
+
 }
 
 @media (max-width: 360px) {

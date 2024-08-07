@@ -38,7 +38,7 @@ const MoviesBox = ({ baza, width }) => {
         if (width <= 1920 && width >= 1000) return 4;
         if (width <= 999 && width >= 770) return 3;
         if (width <= 769 && width >= 550) return 2;
-        return 1;
+        return 0;
     };
 
     useEffect(() => {
@@ -53,7 +53,7 @@ const MoviesBox = ({ baza, width }) => {
     const reviewsWidth = (selectWidth * 100) / 5;
     const reviewsWidth2 = (selectWidth * 100) / 4;
     const reviewsWidth3 = (selectWidth * 100) / 3;
-    const reviewsWidth4 = (selectWidth * 100) / 2;
+    const reviewsWidth4 = (selectWidth * 100) / 1;
 
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;

@@ -3,7 +3,7 @@ import React from 'react'
 const InMovieReviews = ({ width, selectWidth, setReviewNum, reviewNum, reviews }) => {
     const reviewsWidth = ((selectWidth * 90) - 80) / 2
     const getMinWidth = () => {
-        if (width >= 1390) return ``;
+        if (width >= 1390) return `400px`;
         if (width <= 1389 && width >= 920) return `${reviewsWidth}px`;
         if (width <= 919 && width >= 500) return `${reviewsWidth * 2}px`;
         if (width < 500) return `${reviewsWidth * 2 + 60}px`;
