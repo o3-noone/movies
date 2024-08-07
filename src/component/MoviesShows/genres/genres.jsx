@@ -42,7 +42,7 @@ const Genres = ({ item, data, width }) => {
         if (inGenresRef.current) {
             setDivWidth(inGenresRef.current.offsetWidth);
         }
-    }, [data]);
+    }, [width]);
     return (
         <div className='p4 genres-box'>
             <ScrolTop />
