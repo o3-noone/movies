@@ -2,7 +2,52 @@
     width: 100%;
 }
 .genres{
-    padding-top: 150px;
+    padding-top: 120px;
 color: white;
 padding-bottom: 50px;
+}
+.genres-listBox{
+    width: 100%;
+    border: 1px solid red;
+    padding: 70px 0;
+    margin-top: 50px;
+    position: relative;
+}
+
+.genres-list{
+    width: 100%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.genresText{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.genres-film{
+    width: 100%;
+    min-height: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+.genres-item{
+    padding: 10px;
+    background-color: transparent;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+.genres-items{
+    width: 200px;
+    position: relative;
+    background-color: rgb(16, 16, 16);
+    border: 1px solid rgb(74, 74, 74);
+    border-radius: 10px;
+    margin: 0;
+}
+.genres-items>a{
+    color: white;
 }

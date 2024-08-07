@@ -21,10 +21,10 @@ const Movies = ({ data, width }) => {
           {selectData.length >= 1 ? selectData.map((item) => (
             <MoviesItem key={item.id} item={item} count={count} />
           )) : <>
-            <div class="load">
-              <div class="wrapper">
-                <div class="cir"></div>
-                <div class="line-4"></div>
+            <div className="load">
+              <div className="wrapper">
+                <div className="cir"></div>
+                <div className="line-4"></div>
               </div>
             </div>
           </>}

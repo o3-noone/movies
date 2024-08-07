@@ -59,7 +59,7 @@ function App() {
       let combinedResults = [];
 
       try {
-        for (let page = 1; page <= 300; page++) {
+        for (let page = 1; page <= 400; page++) {
           const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`);
           const data = await response.json();
           combinedResults = [...combinedResults, ...data.results];
@@ -67,7 +67,7 @@ function App() {
           await new Promise(resolve => setTimeout(resolve, 1));
         }
 
-        setData(combinedResults.slice(0, 5200));
+        setData(combinedResults.slice(0, 5600));
       } catch (error) {
       }
     };
@@ -80,7 +80,7 @@ function App() {
     formattedTitle = formattedTitle.replace(/-+/g, '-');
     formattedTitle = formattedTitle.replace(/\s+/g, '-');
     formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
-    return formattedTitle.toLowerCase(); 
+    return formattedTitle.toLowerCase();
   };
 
 
@@ -95,26 +95,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setCount={setCount} width={width} data={data} />} />
         <Route path="/movies" element={<Movies width={width} data={data} />} />
-         {data.map((item, index) => (
+        {data.map((item, index) => (
           list.map((listItem, listIndex) => {
             if (item.genre_ids.includes(listItem.id)) {
               return (
                 <Route
                   key={`${index}-${listIndex}`}
-                  path={`/movies/${formatTitle(item.title)}`}
-                  element={<InMovies listItem={listItem} width={width} item={item}/>}
+                  path={`/movies/genres/${formatTitle(item.title)}`}
+                  element={<InMovies listItem={listItem} width={width} item={item} />}
                 />
               );
             }
             return null;
           })
-        ))}
-        {list.map((item, index) => (
-          <Route
-            key={index + 1}
-            path={`/movies/${formatTitle(item.name)}`}
-            element={<Genres item={item}/>}
-          />
         ))}
         {data.map((item, index) => (
           list.map((listItem, listIndex) => {
@@ -122,8 +115,32 @@ function App() {
               return (
                 <Route
                   key={`${index}-${listIndex}`}
+                  path={`/movies/${formatTitle(item.title)}`}
+                  element={<InMovies listItem={listItem} width={width} item={item} />}
+                />
+              );
+            }
+            return null;
+          })
+        ))}
+        {list.map((item, index) => {
+          const filteredData = data.filter(movie => movie.genre_ids.includes(item.id));
+          return (
+            <Route
+              key={index + 1}
+              path={`/movies/${formatTitle(item.name)}`}
+              element={<Genres width={width} data={filteredData} item={item} />}
+            />
+          );
+        })}
+        {data.map((item, index) => (
+          list.map((listItem, listIndex) => {
+            if (item.genre_ids.includes(listItem.id)) {
+              return (
+                <Route
+                  key={`${index}-${listIndex}`}
                   path={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}`}
-                  element={<InMovies listItem={listItem} width={width} item={item}/>}
+                  element={<InMovies listItem={listItem} width={width} item={item} />}
                 />
               );
             }

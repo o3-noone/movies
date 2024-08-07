@@ -11,7 +11,6 @@ const Category = ({ baza, width }) => {
             const result = await response.json();
             setData(result.genres);
         } catch (error) {
-            console.error('Error fetching data:', error);
         }
     };
     useEffect(() => {

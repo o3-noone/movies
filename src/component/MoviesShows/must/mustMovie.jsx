@@ -88,11 +88,11 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
                         </li>
                     )): <>
                     {[1, 2, 3, 4, 5].map((item, index)=>(
-                         <div class="load" key={index+1} style={{minWidth: getMinWidth()}}>
-                         <div class="wrapper">
-                             <div class="cir"></div>
+                         <div className="load" key={index+1} style={{minWidth: getMinWidth()}}>
+                         <div className="wrapper">
+                             <div className="cir"></div>
                         
-                             <div class="line-4"></div>
+                             <div className="line-4"></div>
                          </div>
                      </div>
                        ))}
