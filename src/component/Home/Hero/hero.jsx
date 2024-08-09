@@ -2,7 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './hero.css';
 import icon from './icon.svg';
 import { useNavigate } from 'react-router-dom';
+const Img = ({item}) =>{
+  const img = `https://image.tmdb.org/t/p/w500${item.backdrop_path}`
 
+  return (
+    <>
+    <img
+              className='bg-img'
+              src={img}
+              alt={item.title}
+            />
+    </>
+  )
+}
 const Hero = ({ data, setCount }) => {
   const [shuffledData, setShuffledData] = useState([]);
   const navigate = useNavigate()
@@ -26,12 +38,7 @@ const Hero = ({ data, setCount }) => {
       <div className='hero-bg'>
         {shuffledData.length > 0 ? (
           shuffledData.slice(0, 36).map((item, index) => (
-            <img
-              className='bg-img'
-              key={index + 1}
-              src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
-              alt={item.title}
-            />
+           <Img key={index+1} item={item}/>
           ))
         ) : (
           <>Loading...</>

@@ -8,7 +8,7 @@ const GenresItem = ({ item, film, formatTitle, divWidth }) => {
     const reviewsWidth3 = divWidth / 4
     const reviewsWidth4 = divWidth / 3
     const reviewsWidth5 = divWidth / 2
-
+const img = `https://image.tmdb.org/t/p/w300${film.poster_path}`
 
     const getMinWidth = () => {
         if (divWidth >= 1600) return `${reviewsWidth}px`;
@@ -23,7 +23,7 @@ const GenresItem = ({ item, film, formatTitle, divWidth }) => {
                 <Link to={`/movies/${item.name.toLowerCase()}/${formatTitle(film.title)}/${film.id}`}>
                     <div className='category-imgs movieImg'>
                         <img
-                            src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
+                            src={img}
                             alt={film.title}
                         />
                         <div className="genresText">
