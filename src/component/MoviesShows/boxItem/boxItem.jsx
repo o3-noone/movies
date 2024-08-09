@@ -21,9 +21,9 @@ const BoxItem = ({ baza, width }) => {
         }
     };
     const getDataLength = () => {
-        if (width <= 1920 && width >= 1000) return 3;
-        if (width <= 999 && width >= 770) return 2;
-        if (width <= 769 && width >= 550) return 1
+        if (width <= 1920 && width >= 1000) return 4;
+        if (width <= 999 && width >= 770) return 3;
+        if (width <= 769 && width >= 550) return 2
         return 1
     }
 
@@ -38,11 +38,11 @@ const BoxItem = ({ baza, width }) => {
     useEffect(() => {
         fetchData();
     }, []);
-    const selectWidth = (width - 50) / 100
-    const reviewsWidth = (selectWidth * 90) / 4
-    const reviewsWidth2 = (selectWidth * 90) / 3
-    const reviewsWidth3 = (selectWidth * 90) / 2
-    const reviewsWidth4 = (selectWidth * 90) / 1
+    const selectWidth = (width - 55) / 100
+    const reviewsWidth = (selectWidth * 90) / 5
+    const reviewsWidth2 = (selectWidth * 90) / 4
+    const reviewsWidth3 = (selectWidth * 90) / 3
+    const reviewsWidth4 = (selectWidth * 90) / 2
 
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
@@ -52,7 +52,6 @@ const BoxItem = ({ baza, width }) => {
         if (width <= 770 && width >= 550) return `${reviewsWidth3}px`
         return `${reviewsWidth4}px`;
     };
-    const getMinHeight = getMinWidth().slice(0, -2) - 20
 
     const formatTitle = (title) => {
         let formattedTitle = title.replace(/[^\w\s]/g, '-');
@@ -82,7 +81,7 @@ const BoxItem = ({ baza, width }) => {
                     <ul className="category-list">
                         {data.length >= 1 ? data.map((genre, index) => (
                             <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
-                                <div className="category-items" style={{ height: getMinHeight }}>
+                                <div className="category-items">
                                     <Link to={`/movies/${formatTitle(genre.name)}`}>
                                         <div className='category-imgs'>
                                             {baza.filter(movie => movie.genre_ids.includes(genre.id))

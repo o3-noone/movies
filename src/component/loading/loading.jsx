@@ -12,7 +12,7 @@ const Loading = ({ dataLength }) => {
                 <div className="indBox">
                     <span style={{ width: `${widthPercentage}%` }}></span>
                 </div>
-                Loading... {dataLength/100}
+                Loading... {dataLength/100}%
             </div>
         </div>
     );

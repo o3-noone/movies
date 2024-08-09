@@ -48,6 +48,7 @@
     }
 .inMovie-desc, .inMovie-cast, .inMovie-reviews{
     max-width: 900px;
+    min-width: 900px;
     margin-left: 0;
 
 
@@ -56,7 +57,7 @@
 }
 
 
-@media (max-width: 1390px) {
+@media (max-width: 1391px) {
     /* home respone */
  
     .question-item {
@@ -74,6 +75,9 @@
 
     .device-list {
         grid-template-columns: auto auto;
+    }
+    .inMovie-info{
+        max-width: 900px;
     }
 }
 
@@ -293,6 +297,16 @@
     }
     .inMovie-reviews{
         padding: 40px 10px;
+    }
+    .filmView, .filmTime{
+        font-size: 12px;
+    }
+    .dots-inc2, .dots-inc3{
+        width: 30px;
+        height: 50px;
+    }
+    .filmTimeCenter{
+        font-size: 12px;
     }
 }
 @media (max-width: 430px) {

@@ -6,9 +6,9 @@ const OneItem = ({ baza, width }) => {
     const [number, setNumber] = useState(1);
     const selectWidth = width / 100
     const reviewsWidth = (selectWidth * 90) / 5
-    const reviewsWidth2 = (selectWidth * 90) / 3
-    const reviewsWidth3 = (selectWidth * 90) / 2
-    const reviewsWidth4 = (selectWidth * 90) / 1
+    const reviewsWidth2 = (selectWidth * 90) / 4
+    const reviewsWidth3 = (selectWidth * 90) / 3
+    const reviewsWidth4 = (selectWidth * 90) / 2
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
         if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
@@ -19,10 +19,10 @@ const OneItem = ({ baza, width }) => {
     };
 
     const getDataLength = () => {
-        if (width <= 1920 && width >= 1000) return 4;
-        if (width <= 999 && width >= 770) return 3;
-        if (width <= 769 && width >= 550) return 2
-        return 1
+        if (width <= 1920 && width >= 1000) return 5;
+        if (width <= 999 && width >= 770) return 4;
+        if (width <= 769 && width >= 550) return 3
+        return 2
     }
 
 
@@ -72,9 +72,12 @@ const OneItem = ({ baza, width }) => {
                                             alt={item.title}
                                         />
                                         <div className="filmtext">
-                                            <span className='filmTime'><i className="fa-regular fa-clock"></i> 1h 30min</span>
-                                            <span className='filmView'><i className="fa-regular fa-eye"></i> {item.vote_count}</span>
-                                        </div>
+                                            <span className='filmTime'><i className="fa-regular fa-clock"></i> 1h 29m</span>
+                                           <span className='filmView'>
+  <i className="fa-regular fa-eye"></i>
+  {item.vote_count > 999 ? `${Math.floor(item.vote_count / 1000)}k` : item.vote_count}
+</span>
+      </div>
                                     </div>
                                 </Link>
                             </div>

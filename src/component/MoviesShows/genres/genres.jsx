@@ -7,7 +7,7 @@ import ScrolTop from '../../scrolTop/scrolTop';
 const Genres = ({ item, data, width }) => {
     const [page, setPage] = useState(1);
     const [filteredData, setFilteredData] = useState([]);
-    const itemsPerPage = 24;
+    const itemsPerPage = 25;
 
     const formatTitle = (title) => {
         let formattedTitle = title.replace(/[^\w\s]/g, '-');
@@ -18,24 +18,22 @@ const Genres = ({ item, data, width }) => {
     };
 
     useEffect(() => {
-        const startIndex = (page - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        setFilteredData(data.slice(startIndex, endIndex));
+        setFilteredData(data.slice(0, itemsPerPage*page));
     }, [data, page]);
 
-    const handlePageChange = (newPage) => {
-        if (newPage >= 1 && newPage <= Math.ceil(data.length / itemsPerPage)) {
-            setPage(newPage);
-        }
-    };
+    // const handlePageChange = (newPage) => {
+    //     if (newPage >= 1 && newPage <= Math.ceil(data.length / itemsPerPage)) {
+    //         setPage(newPage);
+    //     }
+    // };
 
-    useEffect(() => {
-        if (page < 1) {
-            setPage(1);
-        } else if (page > Math.ceil(data.length / itemsPerPage)) {
-            setPage(Math.ceil(data.length / itemsPerPage));
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (page < 1) {
+    //         setPage(1);
+    //     } else if (page > Math.ceil(data.length / itemsPerPage)) {
+    //         setPage(Math.ceil(data.length / itemsPerPage));
+    //     }
+    // }, [data]);
     const inGenresRef = useRef(null)
     const [divWidth, setDivWidth] = useState(0)
     useEffect(() => {
@@ -63,19 +61,19 @@ const Genres = ({ item, data, width }) => {
                 </div>
                 <div className="genres-listBox">
                     <div className="genres-pages">
-                        <button onClick={() => handlePageChange(page - 1)}>-</button>
+                        <button onClick={() => setPage(page-1)}>-</button>
                         <input
                             type="number"
                             value={page}
                             onChange={(e) => handlePageChange(Number(e.target.value))}
                         />
-                        <button onClick={() => handlePageChange(page + 1)}>+</button>
+                        <button onClick={() => setPage(page+1)}>+</button>
                     </div>
                     <ul className="genres-list" ref={inGenresRef}>
                         {filteredData.length >= 1 ? filteredData.map((film, index) => (
                             <GenresItem divWidth={divWidth} key={index + 1} item={item} film={film} formatTitle={formatTitle} />
                         )) : <>
-                            {[1, 2, 3, 4, 5].map((item, index) => (
+                            {[1, 2, 3, 4, 5].map((item, index) => (     
                                 <div className="load" key={index + 1}>
                                     <div className="wrapper">
                                         <div className="cir"></div>

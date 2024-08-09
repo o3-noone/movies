@@ -44,9 +44,10 @@ function App() {
           combinedResults = [...combinedResults, ...data.results];
           itemsFetched += data.results.length;
           setLengthData(itemsFetched);
-          await new Promise(resolve => setTimeout(resolve, 1));
+          await new Promise(resolve => setTimeout(resolve));
         }
-        setData(combinedResults.slice(0, 10000));
+        setData(combinedResults);
+        
       } catch (error) {
       }
     };

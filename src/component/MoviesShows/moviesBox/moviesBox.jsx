@@ -53,7 +53,7 @@ const MoviesBox = ({ baza, width }) => {
     const reviewsWidth = (selectWidth * 100) / 5;
     const reviewsWidth2 = (selectWidth * 100) / 4;
     const reviewsWidth3 = (selectWidth * 100) / 3;
-    const reviewsWidth4 = (selectWidth * 100) / 1;
+    const reviewsWidth4 = (selectWidth * 100) / 2;
 
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;

@@ -7,9 +7,9 @@ const New = ({ baza, width }) => {
 
     const selectWidth = width / 100;
     const reviewsWidth = (selectWidth * 90) / 5;
-    const reviewsWidth2 = (selectWidth * 90) / 3;
-    const reviewsWidth3 = (selectWidth * 90) / 2;
-    const reviewsWidth4 = (selectWidth * 90) / 1;
+    const reviewsWidth2 = (selectWidth * 90) / 4;
+    const reviewsWidth3 = (selectWidth * 90) / 3;
+    const reviewsWidth4 = (selectWidth * 90) / 2;
 
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
@@ -83,7 +83,7 @@ const sortRandData=randomData.slice(0, 20).sort((a, b)=>b.release_date.slice(0, 
                                             alt={item.title}
                                         />
                                         <div className="filmtext">
-                                            <span className='filmTimeCenter'>Released at {item.release_date}</span>
+                                            <span className='filmTimeCenter'>{width<=500? "Rel..." : "Released at"} {item.release_date}</span>
                                         </div>
                                     </div>
                                 </Link>

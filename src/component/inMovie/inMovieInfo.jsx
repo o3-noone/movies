@@ -4,7 +4,7 @@ const InMovieInfo = ({ item, width, filterData }) => {
     return (
         <>
 
-            {width >= 1390 ? <>
+            {width >= 1389 ? <>
                 <div className="inMovie-info">
                     <div className="inMovie-info-text">
                         <h4><i className='fa-solid fa-calendar'></i> Released year</h4>

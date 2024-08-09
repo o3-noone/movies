@@ -3,11 +3,11 @@ import React from 'react'
 const InMovieMiniInfo = ({width, selectWidth, item, filterData}) => {
   return (
     <>
-     {width <= 1390 ? <>
+     {width <= 1388 ? <>
                             <div
                                 className="inMovie-info inMovie-infoMax"
                                 style={{
-                                    minWidth: width >= 1390 ? 'auto' : `${selectWidth * 90}px`,
+                                    minWidth: width >= 1390 ? '' : `${selectWidth * 90}px`,
                                     marginTop: "20px",
                                     marginLeft: "0"
                                 }}
@@ -23,16 +23,7 @@ const InMovieMiniInfo = ({width, selectWidth, item, filterData}) => {
                                 <div className="inMovie-info-text">
                                     <h4><i className='fa-solid fa-star'></i> Rating</h4>
                                     <div className="rating-movie">
-                                        <span>
-                                            <div className="span-text">
-                                                IMDb
-                                            </div>
-                                            <div className="span-rating">
-                                                <i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i><i className='fa-solid fa-star'></i>
-                                                {item.vote_average - 1.76
-                                                }
-                                            </div>
-                                        </span>
+                                       
                                         <span>
                                             <div className="span-text">
                                                 Streamvibe
@@ -46,7 +37,8 @@ const InMovieMiniInfo = ({width, selectWidth, item, filterData}) => {
                                     </div>
                                 </div>
                                 <div className="inMovie-info-text">
-                                    <h4><i className='fa-solid fa-language'></i> Genres</h4>
+                                                           <h4><i className="fa-solid fa-qrcode"></i> Genres</h4>
+
                                     <div className='rating-movie'>
                                         {filterData.map((gen) => (
                                             <span key={gen.id} className='span-lang'>{gen.name}</span>

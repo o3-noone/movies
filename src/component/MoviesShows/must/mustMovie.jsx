@@ -4,7 +4,7 @@ import "./mustMovie.css"
 
 const MustMovie = ({ width, number, setNumber, baza }) => {
 
-    const defData=baza.slice(0, 20)
+    const defData = baza.slice(0, 20)
     const getDataLength = () => {
         if (width <= 1920 && width >= 1000) return 4;
         if (width <= 999 && width >= 770) return 3;
@@ -13,7 +13,7 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
     };
 
     useEffect(() => {
-        if (number > (defData- getDataLength())) {
+        if (number > (defData - getDataLength())) {
             setNumber(1);
         } else if (number <= 0) {
             setNumber(defData - getDataLength());
@@ -22,9 +22,9 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
 
     const selectWidth = width / 100;
     const reviewsWidth = (selectWidth * 90) / 5;
-    const reviewsWidth2 = (selectWidth * 90) / 3;
-    const reviewsWidth3 = (selectWidth * 90) / 2;
-    const reviewsWidth4 = (selectWidth * 90) / 1;
+    const reviewsWidth2 = (selectWidth * 90) / 4;
+    const reviewsWidth3 = (selectWidth * 90) / 3;
+    const reviewsWidth4 = (selectWidth * 90) / 2;
 
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
@@ -69,8 +69,8 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
 
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {sortData.length>=1 ? sortData.map((item, index) => (
-                        <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
+                    {sortData.length >= 1 ? sortData.map((item, index) => (
+                        <li className='category-item' key={index + 1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
                             <div className="category-items">
                                 <Link to={`/movies/${formatTitle(item.title)}/${item.id}`}>
                                     <div className='category-imgs movieImg'>
@@ -79,23 +79,26 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
                                             alt={item.title}
                                         />
                                         <div className="filmtext">
-                                            <span className='filmTime'><i className="fa-regular fa-clock"></i> 1h 30min</span>
-                                            <span className='filmView'><i className="fa-regular fa-eye"></i> {item.vote_count}</span>
+                                            <span className='filmTime'><i className="fa-regular fa-clock"></i> 1h 30m</span>
+                                            <span className='filmView'>
+                                                <i className="fa-regular fa-eye"></i>
+                                                {item.vote_count > 999 ? `${Math.floor(item.vote_count / 1000)}k` : item.vote_count}
+                                            </span>
                                         </div>
                                     </div>
                                 </Link>
                             </div>
                         </li>
-                    )): <>
-                    {[1, 2, 3, 4, 5].map((item, index)=>(
-                         <div className="load" key={index+1} style={{minWidth: getMinWidth()}}>
-                         <div className="wrapper">
-                             <div className="cir"></div>
-                        
-                             <div className="line-4"></div>
-                         </div>
-                     </div>
-                       ))}
+                    )) : <>
+                        {[1, 2, 3, 4, 5].map((item, index) => (
+                            <div className="load" key={index + 1} style={{ minWidth: getMinWidth() }}>
+                                <div className="wrapper">
+                                    <div className="cir"></div>
+
+                                    <div className="line-4"></div>
+                                </div>
+                            </div>
+                        ))}
                     </>}
                 </ul>
                 {width <= 770 ? (
