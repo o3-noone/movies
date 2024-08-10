@@ -6,6 +6,9 @@ import ScrolTop from '../../scrolTop/scrolTop';
 import Trial from '../../Home/tralFree/trial';
 
 const Genres = ({ item, data, width }) => {
+    useEffect(() => {
+        document.title = `Genres |  ${item.name}`;
+      }, []);
     const [page, setPage] = useState(1);
     const [filteredData, setFilteredData] = useState([]);
     const itemsPerPage = 25;

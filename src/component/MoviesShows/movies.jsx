@@ -7,7 +7,9 @@ import MoviesBox from './moviesBox/moviesBox';
 const Movies = ({ data, width }) => {
   const [count, setCount] = useState(0);
   const [randomNumber, setRandomNumber] = useState(null);
-  
+  useEffect(() => {
+    document.title = 'Movies & TV Shows';
+  }, []);
   useEffect(() => {
     const generateRandomNumber = () => {
       const number = Math.floor(Math.random() * (data.length - 10 + 1)) + 10;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from './Hero/hero'
 import "./home.css"
 import Category from './category/category'
@@ -8,6 +8,9 @@ import Sub from './sub/sub'
 import Trial from './tralFree/trial'
 import ScrolTop from '../scrolTop/scrolTop'
 const Home = ({data, width, setCount}) => {
+  useEffect(() => {
+    document.title = 'StreamVibe | Watch Movies & TV Shows';
+  }, []);
   return (
     <div className='home'>
       <ScrolTop/>

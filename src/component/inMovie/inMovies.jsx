@@ -12,6 +12,7 @@ import InMovieInfo from './inMovieInfo';
 import { Link } from 'react-router-dom';
 
 const InMovies = ({ item, width, listItem }) => {
+
     const [add, setAdd] = useState(false);
     const [like, setLike] = useState(false);
     const [music, setMusic] = useState(false);
@@ -31,7 +32,9 @@ const InMovies = ({ item, width, listItem }) => {
         } catch (error) {
         }
     };
-
+  useEffect(() => {
+    document.title = `Movies | ${item.title}`;
+  }, []);
     useEffect(() => {
         fetchData();
     }, []);
