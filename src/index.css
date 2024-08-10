@@ -4,10 +4,14 @@
   text-decoration: none;
   margin: 0 auto;
   padding: 0;
-  /* border: 1px solid red; */
+  /* border: 1px solid white; */
+}
+@import"https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap";html {
+  font-size: 100%;
+  scroll-behavior: smooth
 }
 body{
-  background-color: black;
+  background-color:#141414;
 }
 .container{
   max-width: 1920px;

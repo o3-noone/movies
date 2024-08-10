@@ -1,11 +1,13 @@
 .footer{
     width: 100%;
+    background-color: black;
 }
 .footer-list{
     width: 100%;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
     justify-content: space-between;
+    padding-top: 50px;
 }
 .footer-item>a{
     color: white;

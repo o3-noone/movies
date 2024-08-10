@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./mustMovie.css"
 
-const MustMovie = ({ width, number, setNumber, baza }) => {
+const MustMovie = ({ width, number, setNumber, baza, minWidth2 }) => {
 
     const defData = baza.slice(0, 20)
     const getDataLength = () => {
@@ -20,23 +20,8 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
         }
     }, [number, baza]);
 
-    const selectWidth = width / 100;
-    const reviewsWidth = (selectWidth * 90) / 5;
-    const reviewsWidth2 = (selectWidth * 90) / 4;
-    const reviewsWidth3 = (selectWidth * 90) / 3;
-    const reviewsWidth4 = (selectWidth * 90) / 2;
-
-    const getMinWidth = () => {
-        if (width >= 1600) return `${reviewsWidth}px`;
-        if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
-        if (width <= 1560 && width >= 1000) return `${reviewsWidth}px`;
-        if (width <= 1000 && width >= 770) return `${reviewsWidth2}px`;
-        if (width <= 770 && width >= 550) return `${reviewsWidth3}px`;
-        return `${reviewsWidth4}px`;
-    };
-
     const formatTitle = (title) => {
-        if (!title) return ''; // Agar title mavjud bo'lmasa bo'sh string qaytaring
+        if (!title) return ''; 
         let formattedTitle = title.replace(/[^\w\s]/g, '-');
         formattedTitle = formattedTitle.replace(/-+/g, '-');
         formattedTitle = formattedTitle.replace(/\s+/g, '-');
@@ -50,7 +35,7 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
         <div className='mustMovie'>
             <p className="title">Movies</p>
             <div className="moviesTitle">
-                <h4>Must - Watch Movies</h4>
+                <h1>Must - Watch Movies</h1>
                 {width >= 771 ? (
                     <div className="dots-movie">
                         <button className="dots-inc" onClick={() => setNumber(number - 1)}>
@@ -70,20 +55,20 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
             <div className="categoryList-box">
                 <ul className="category-list">
                     {sortData.length >= 1 ? sortData.map((item, index) => (
-                        <li className='category-item' key={index + 1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
+                        <li className='category-item' key={index + 1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth:minWidth2 }}>
                             <div className="category-items">
                                 <Link to={`/movies/${formatTitle(item.title)}/${item.id}`}>
-                                    <div className='category-imgs movieImg'>
+                                    <div className='genres-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                                             alt={item.title}
                                         />
-                                        <div className="filmtext">
-                                            <span className='filmTime'><i className="fa-regular fa-clock"></i> 1h 30m</span>
-                                            <span className='filmView'>
-                                                <i className="fa-regular fa-eye"></i>
-                                                {item.vote_count > 999 ? `${Math.floor(item.vote_count / 1000)}k` : item.vote_count}
-                                            </span>
+                                        <div className="genresText">
+                                            <h4 className="genres-film"> {item.title.slice(0, 20)}{item.title.length <= 20 ? "" : <>...</>}</h4>
+                                            <div className="genres-rating">
+                                                <span><i className='fa-solid fa-star'></i> {item.vote_average}/10 </span>
+                                                <p>{item.release_date}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
@@ -91,7 +76,7 @@ const MustMovie = ({ width, number, setNumber, baza }) => {
                         </li>
                     )) : <>
                         {[1, 2, 3, 4, 5].map((item, index) => (
-                            <div className="load" key={index + 1} style={{ minWidth: getMinWidth() }}>
+                            <div className="load" key={index + 1} style={{ minWidth: minWidth2 }}>
                                 <div className="wrapper">
                                     <div className="cir"></div>
 

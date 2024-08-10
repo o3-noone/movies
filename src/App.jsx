@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import './App.css';
 import Home from './component/Home/home';
 import Header from './component/header/header';
 import Footer from './component/Footer/footer';
@@ -38,7 +37,7 @@ function App() {
       let itemsFetched = 0;
 
       try {
-        for (let page = 1; page <= 500; page++) {
+        for (let page = 1; page <= 100; page++) {
           const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`);
           const data = await response.json();
           combinedResults = [...combinedResults, ...data.results];
@@ -98,7 +97,7 @@ function App() {
             const filteredData = data.filter(movie => movie.genre_ids.includes(listItem.id));
             return (
               <Route
-                key={listIndex}
+                key={listIndex+1}
                 path={`/movies/${formatTitle(listItem.name)}`}
                 element={<Genres width={width} data={filteredData} item={listItem} />}
               />
@@ -109,7 +108,7 @@ function App() {
               if (item.genre_ids.includes(listItem.id)) {
                 return (
                   <Route
-                    key={`${index}-${listIndex}`}
+                    key={`${listIndex}`}
                     path={`/movies/${formatTitle(listItem.name)}/${formatTitle(item.title)}/${item.id}`}
                     element={<InMovies listItem={listItem} width={width} item={item} />}
                   />

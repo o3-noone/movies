@@ -23,7 +23,7 @@
     color: grey;
     margin-left: 0;
 }
-.categoryList-box{
+.categoryList-box {
     position: relative;
 }
 
@@ -32,7 +32,7 @@
     display: flex;
     align-items: end;
     justify-content: space-between;
-    overflow: hidden;
+  overflow: hidden;
     transition: transform 0.5s ease-in-out;
     position: relative;
     padding: 25px 0;
@@ -43,11 +43,11 @@
     background-color: transparent;
     transition: transform 0.5s ease-in-out;
     transform: translateX(0);
+    scroll-snap-align: start;
 }
+
 .category-items{
     position: relative;
-    background-color: rgb(16, 16, 16);
-    border: 1px solid rgb(74, 74, 74);
     border-radius: 10px;
 }
 .category-imgs {
@@ -82,7 +82,6 @@
 .dots {
     width: 210px;
     height: 50px;
-    background-color: black;
     border: 2px solid rgb(40, 40, 40);
     padding: 6px;
     display: flex;
@@ -95,7 +94,6 @@
 .dots2{
     width: 150px;
     height: 5px;
-    background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;

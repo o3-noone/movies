@@ -1,23 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const New = ({ baza, width }) => {
+const New = ({ baza, width, minWidth2 }) => {
     const [number, setNumber] = useState(1);
     const [randomData, setRandomData] = useState([]);
-
-    const selectWidth = width / 100;
-    const reviewsWidth = (selectWidth * 90) / 5;
-    const reviewsWidth2 = (selectWidth * 90) / 4;
-    const reviewsWidth3 = (selectWidth * 90) / 3;
-    const reviewsWidth4 = (selectWidth * 90) / 2;
-
-    const getMinWidth = () => {
-        if (width >= 1600) return `${reviewsWidth}px`;
-        if (width <= 1600 && width >= 1000) return `${reviewsWidth}px`;
-        if (width <= 1000 && width >= 770) return `${reviewsWidth2}px`;
-        if (width <= 770 && width >= 550) return `${reviewsWidth3}px`;
-        return `${reviewsWidth4}px`;
-    };
 
     const formatTitle = (title) => {
         let formattedTitle = title.replace(/[^\w\s]/g, '-');
@@ -28,10 +14,10 @@ const New = ({ baza, width }) => {
     };
 
     const getDataLength = () => {
-        if (width <= 1920 && width >= 1000) return 4;
-        if (width <= 999 && width >= 770) return 3;
-        if (width <= 769 && width >= 550) return 2;
-        return 1;
+        if (width <= 1920 && width >= 1000) return 5;
+        if (width <= 999 && width >= 770) return 4;
+        if (width <= 769 && width >= 550) return 3;
+        return 2;
     };
 
     const getRandomElements = (arr) => {
@@ -55,7 +41,7 @@ const sortRandData=randomData.slice(0, 20).sort((a, b)=>b.release_date.slice(0, 
     return (
         <>
             <div className="moviesTitle">
-                <h4>New Releases</h4>
+                <h1>New Releases</h1>
                 {width >= 771 ? (
                     <div className="dots-movie">
                         <button className="dots-inc" onClick={() => setNumber((prev) => prev - 1)}>
@@ -74,16 +60,20 @@ const sortRandData=randomData.slice(0, 20).sort((a, b)=>b.release_date.slice(0, 
             <div className="categoryList-box">
                 <ul className="category-list">
                     {sortRandData.length>=1? sortRandData.map((item, index) => (
-                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index+1}>
+                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: minWidth2 }} key={index+1}>
                             <div className="category-items">
                                 <Link to={`/movies/${formatTitle(item.title)}/${item.id}`}>
-                                    <div className='category-imgs movieImg'>
+                                <div className='genres-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                                             alt={item.title}
                                         />
-                                        <div className="filmtext">
-                                            <span className='filmTimeCenter'>{width<=500? "Rel..." : "Released at"} {item.release_date}</span>
+                                        <div className="genresText">
+                                            <h4 className="genres-film"> {item.title.slice(0, 20)}{item.title.length <= 20 ? "" : <>...</>}</h4>
+                                            <div className="genres-rating">
+                                                <span><i className='fa-solid fa-star'></i> {item.vote_average}/10 </span>
+                                                <p>{item.release_date}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
@@ -91,7 +81,7 @@ const sortRandData=randomData.slice(0, 20).sort((a, b)=>b.release_date.slice(0, 
                         </li>
                     )): <>
                     {[1, 2, 3, 4, 5].map((item, index)=>(
-                         <div className="load" key={index+1} style={{minWidth: getMinWidth()}}>
+                         <div className="load" key={index+1} style={{minWidth: minWidth2}}>
                          <div className="wrapper">
                              <div className="cir"></div>
                         

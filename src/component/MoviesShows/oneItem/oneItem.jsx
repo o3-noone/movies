@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./oneItem.css";
 
-const OneItem = ({ baza, width }) => {
+const OneItem = ({ baza, width, minWidth2 }) => {
     const [number, setNumber] = useState(1);
     const selectWidth = width / 100
     const reviewsWidth = (selectWidth * 90) / 5
     const reviewsWidth2 = (selectWidth * 90) / 4
     const reviewsWidth3 = (selectWidth * 90) / 3
-    const reviewsWidth4 = (selectWidth * 90) / 2
+    const reviewsWidth4 = (((width+57) /100) * 90) /2
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
         if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
@@ -46,7 +46,7 @@ const OneItem = ({ baza, width }) => {
     return (
         <>
             <div className="moviesTitle">
-                <h4>Trending Now</h4>
+                <h1>Trending Now</h1>
                 {width >= 771 ? <><div className="dots-movie">
                     <button className="dots-inc" onClick={() => {
                         setNumber(number - 1)
@@ -62,36 +62,36 @@ const OneItem = ({ baza, width }) => {
             </div>
             <div className="categoryList-box">
                 <ul className="category-list">
-                    {sortBaza.length >=1 ? sortBaza.map((item, index) => (
-                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }} key={index + 1}>
+                    {sortBaza.length >= 1 ? sortBaza.map((item, index) => (
+                        <li className='category-item' style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: minWidth2 }} key={index + 1}>
                             <div className="category-items">
                                 <Link to={`/movies/${formatTitle(item.title)}/${item.id}`}>
-                                    <div className='category-imgs movieImg'>
+                                    <div className='genres-imgs movieImg'>
                                         <img
                                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                                             alt={item.title}
                                         />
-                                        <div className="filmtext">
-                                            <span className='filmTime'><i className="fa-regular fa-clock"></i> 1h 29m</span>
-                                           <span className='filmView'>
-  <i className="fa-regular fa-eye"></i>
-  {item.vote_count > 999 ? `${Math.floor(item.vote_count / 1000)}k` : item.vote_count}
-</span>
-      </div>
+                                        <div className="genresText">
+                                            <h4 className="genres-film"> {item.title.slice(0, 20)}{item.title.length <= 20 ? "" : <>...</>}</h4>
+                                            <div className="genres-rating">
+                                                <span><i className='fa-solid fa-star'></i> {item.vote_average}/10 </span>
+                                                <p>{item.release_date}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </Link>
                             </div>
                         </li>
                     )) : <>
-                       {[1, 2, 3, 4, 5].map((item, index)=>(
-                         <div className="load" key={index+1} style={{minWidth: getMinWidth()}}>
-                         <div className="wrapper">
-                             <div className="cir"></div>
-                        
-                             <div className="line-4"></div>
-                         </div>
-                     </div>
-                       ))}
+                        {[1, 2, 3, 4, 5].map((item, index) => (
+                            <div className="load" key={index + 1} style={{ minWidth: minWidth2 }}>
+                                <div className="wrapper">
+                                    <div className="cir"></div>
+
+                                    <div className="line-4"></div>
+                                </div>
+                            </div>
+                        ))}
                     </>}
                 </ul>
                 {width <= 770 ? <><div className="dots2">

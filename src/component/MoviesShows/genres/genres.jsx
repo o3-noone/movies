@@ -3,6 +3,7 @@ import "./genres.css";
 import { Link } from 'react-router-dom';
 import GenresItem from './genresItem';
 import ScrolTop from '../../scrolTop/scrolTop';
+import Trial from '../../Home/tralFree/trial';
 
 const Genres = ({ item, data, width }) => {
     const [page, setPage] = useState(1);
@@ -21,19 +22,6 @@ const Genres = ({ item, data, width }) => {
         setFilteredData(data.slice(0, itemsPerPage*page));
     }, [data, page]);
 
-    // const handlePageChange = (newPage) => {
-    //     if (newPage >= 1 && newPage <= Math.ceil(data.length / itemsPerPage)) {
-    //         setPage(newPage);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     if (page < 1) {
-    //         setPage(1);
-    //     } else if (page > Math.ceil(data.length / itemsPerPage)) {
-    //         setPage(Math.ceil(data.length / itemsPerPage));
-    //     }
-    // }, [data]);
     const inGenresRef = useRef(null)
     const [divWidth, setDivWidth] = useState(0)
     useEffect(() => {
@@ -41,7 +29,9 @@ const Genres = ({ item, data, width }) => {
             setDivWidth(inGenresRef.current.offsetWidth);
         }
     }, [width]);
+    
     return (
+        <>
         <div className='p4 genres-box'>
             <ScrolTop />
             <div className="genres">
@@ -59,7 +49,7 @@ const Genres = ({ item, data, width }) => {
                         </li>
                     </ul>
                 </div>
-                <div className="genres-listBox">
+                <div className="genres-listBox"ref={inGenresRef}>
                     <div className="genres-pages">
                         <button onClick={() => setPage(page-1)}>-</button>
                         <input
@@ -69,9 +59,9 @@ const Genres = ({ item, data, width }) => {
                         />
                         <button onClick={() => setPage(page+1)}>+</button>
                     </div>
-                    <ul className="genres-list" ref={inGenresRef}>
+                    <ul className="genres-list" >
                         {filteredData.length >= 1 ? filteredData.map((film, index) => (
-                            <GenresItem divWidth={divWidth} key={index + 1} item={item} film={film} formatTitle={formatTitle} />
+                            <GenresItem width={width} divWidth={divWidth} key={index + 1} item={item} film={film} formatTitle={formatTitle} />
                         )) : <>
                             {[1, 2, 3, 4, 5].map((item, index) => (     
                                 <div className="load" key={index + 1}>
@@ -88,6 +78,8 @@ const Genres = ({ item, data, width }) => {
                 </div>
             </div>
         </div>
+        <Trial/>
+        </>
     );
 }
 

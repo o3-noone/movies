@@ -23,10 +23,13 @@
     align-items: center;
     justify-content: space-between;
 }
-.moviesTitle>h4{
+.moviesTitle>h1{
     color: white;
-    margin: 0;
+    margin-left: 0;
     font-size: 30px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: monospace;
+    font-size: 2.375rem;
 }
 
 

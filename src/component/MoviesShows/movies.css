@@ -3,8 +3,7 @@
 }
 
 .movies-hero {
-    min-height: 700px;
-    padding-top: 150px;
+    padding-top: 130px;
     position: relative;
 }
 
@@ -16,32 +15,52 @@
 
 .movies-item {
     min-width: 100%;
-    height: 700px;
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position:center;
-    text-align: center;
     border-radius: 15px;
     transition: transform 0.5s ease-in-out;
     transform: translateX(0);
+    position: relative;
+    overflow: hidden;
 }
+.movies-item>iframe{
+    height: 400px;
+}
+
+.movie-btns {
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
 .movies-title{
     min-width: 100%;
-    min-height: 700px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgb(0, 0, 0));
-    position: relative;
+    background: linear-gradient(to bottom, #14141400, rgba(0, 0, 0, 0), #141414);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+}
+.moviesBaner{
+    width: 100%;
+}
+.moviesBaner>img{
+    width: 100%;
 }
 .movies-title2{
     min-width: 100%;
-    max-height: 700px;
-    position: relative;
-    margin-top: -70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .movies-box{
     width: 100%;
-    position: absolute;
-    bottom: 20%;
     text-align: center;
+    position: absolute;
+    bottom: 13%;
 }
 
 .movie-text>h3{
@@ -54,12 +73,6 @@
     opacity: 0.8;
     margin-top: 10px;
 
-}
-.movie-btns{
-   max-width: 300px;
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
 }
 .movie-play{
     padding: 15px 26px;

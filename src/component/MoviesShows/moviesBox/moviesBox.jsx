@@ -16,7 +16,7 @@ const MoviesBox = ({ baza, width }) => {
         if (inMovieBox.current) {
             setDivWidth(inMovieBox.current.offsetWidth);
         }
-    }, [baza]);
+    }, [width]);
 
     const key = "46ec25609ba3e9b8903dc225769a8f80";
 
@@ -35,9 +35,9 @@ const MoviesBox = ({ baza, width }) => {
     }, []);
 
     const getDataLength = () => {
-        if (width <= 1920 && width >= 1000) return 4;
-        if (width <= 999 && width >= 770) return 3;
-        if (width <= 769 && width >= 550) return 2;
+        if (divWidth <= 1920 && divWidth >= 1000) return 4;
+        if (divWidth <= 999 && divWidth >= 770) return 3;
+        if (divWidth <= 769 && divWidth >= 550) return 2;
         return 1;
     };
 
@@ -49,19 +49,18 @@ const MoviesBox = ({ baza, width }) => {
         }
     }, [number, data.length, getDataLength]);
 
-    const selectWidth = divWidth / 100;
-    const reviewsWidth = (selectWidth * 100) / 5;
-    const reviewsWidth2 = (selectWidth * 100) / 4;
-    const reviewsWidth3 = (selectWidth * 100) / 3;
-    const reviewsWidth4 = (selectWidth * 100) / 2;
+    const reviewsWidth = divWidth / 5;
+    const reviewsWidth1 = divWidth / 4;
+    const reviewsWidth2 = divWidth / 3;
+    const reviewsWidth3 = divWidth / 2;
 
     const getMinWidth = () => {
         if (width >= 1600) return `${reviewsWidth}px`;
-        if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
-        if (width <= 1560 && width >= 1000) return `${reviewsWidth}px`;
+        if (width <= 1600 && width >= 1360) return `${reviewsWidth}px`;
+        if (width <= 1360 && width >= 1000) return `${reviewsWidth1}px`;
         if (width <= 1000 && width >= 770) return `${reviewsWidth2}px`;
         if (width <= 770 && width >= 550) return `${reviewsWidth3}px`;
-        return `${reviewsWidth4}px`;
+        return `${reviewsWidth3}px`;
     };
 
     const formatTitle = (title) => {
@@ -77,7 +76,7 @@ const MoviesBox = ({ baza, width }) => {
             <div className='moviesBox'>
                 <p className="title">Movies</p>
                 <div className="moviesTitle">
-                    <h4>Our Genres</h4>
+                    <h1>Our Genres</h1>
                     {width >= 771 ? (
                         <div className="dots-movie">
                             <button className="dots-inc" onClick={() => setNumber(number - 1)}>
@@ -108,11 +107,11 @@ const MoviesBox = ({ baza, width }) => {
                                             {baza
                                                 .filter(movie => movie.genre_ids.includes(genre.id))
                                                 .slice(0, 4)
-                                                .map(movie => (
+                                                .map((movie, index) => (
                                                     <img
                                                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                                         alt={movie.title}
-                                                        key={movie.id}
+                                                        key={index+1}
                                                     />
                                                 ))
                                             }
@@ -140,10 +139,10 @@ const MoviesBox = ({ baza, width }) => {
                         </>
                     ) : ""}
                 </div>
-                <BoxItem width={width} baza={baza} />
-                <OneItem width={width - 56} baza={baza} />
-                <New width={width - 56} baza={baza} />
-                <MustMovie width={width - 56} baza={baza} number={number} setNumber={setNumber} />
+                <BoxItem width={divWidth} minWidth2={getMinWidth()} baza={baza} />
+                <OneItem width={divWidth} minWidth2={getMinWidth()} baza={baza} />
+                <New width={divWidth} minWidth2={getMinWidth()} baza={baza} />
+                <MustMovie width={divWidth} minWidth2={getMinWidth()} baza={baza} number={number} setNumber={setNumber} />
             </div>
         </>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import "./loading.css";
 import logo from "./Logo.svg"
 const Loading = ({ dataLength }) => {
-    const maxDataLength = 10000;
+    const maxDataLength = 1500;
     const widthPercentage = (dataLength / maxDataLength) * 100;
 
     return (

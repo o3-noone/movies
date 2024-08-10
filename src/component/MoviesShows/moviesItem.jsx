@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const MoviesItem = ({ item, count }) => {
+const MoviesItem = ({ item, count, width }) => {
     const [add, setAdd] = useState(false);
     const [like, setLike] = useState(false);
     const [music, setMusic] = useState(false);
@@ -13,21 +13,22 @@ const MoviesItem = ({ item, count }) => {
         formattedTitle = formattedTitle.replace(/^-+|-+$/g, '');
         return formattedTitle;
     };
+
     return (
         <>
             {item ? <>
                 <div
                     style={{
-                        backgroundImage: `url(${item.backdrop_path ? `https://image.tmdb.org/t/p/original/${item.backdrop_path}` : `https://image.tmdb.org/t/p/original/${item.poster_path}`})`,
                         transform: `translateX(-${count * 100}%)`
                     }}
                     className='movies-item'
                 >
-                    <div className="movies-title">
+                   <span className='moviesBaner'><img src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} alt={item.title} /></span>
+                   <div className="movies-title">
                         <div className="movies-box">
                             <div className="movie-text">
                                 <h3>{item.title}</h3>
-                                <p>{item.overview}</p>
+                               {width<=790 ? <></> :  <p>{item.overview.slice(0, 200)}...</p>}
                             </div>
                             <div className="movie-btns">
                                 <button className="movie-play" onClick={() => {

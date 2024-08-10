@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from './Logo.svg';
 
 const HeaderMobile = ({ count, setCount }) => {
+    const [scrollPosition, setScrollPosition] = useState(0);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        const updateDimensions = () => {
+            setScrollPosition(window.scrollY);
+        };
+        window.addEventListener('scroll', updateDimensions);
+        updateDimensions();
+        return () => window.removeEventListener('scroll', updateDimensions);
+    }, []);
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     };
-
     return (
-        <div className='header-mobile p4'>
+        <div className='header-mobile  p4' style={{backgroundColor: `${scrollPosition>1? "#111" : "#141414"}`, transition: "background-color 0.5s ease"}}>
             <div className="hMobile">
                 <div className="h-logo">
                     <NavLink

@@ -36,10 +36,17 @@
 
 .question-list {
     width: 100%;
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     justify-content: space-between;
     margin-top: 70px;
+}
+
+.question-left {
+    width: 100%;
+}
+
+.question-right {
+    width: 100%;
 }
 
 .question-item {
@@ -52,7 +59,10 @@
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: bottom;
+}
 
+.question-item>p {
+   margin-left: 80px;
 }
 
 .question-top {
@@ -60,11 +70,14 @@
     display: flex;
     align-items: center;
 }
-.question-top>i{
+
+.question-top>i {
     color: white;
     margin-right: 0;
-    cursor: pointer;;
+    cursor: pointer;
+    ;
 }
+
 .question-top>h4 {
     width: 500px;
     width: 100%;

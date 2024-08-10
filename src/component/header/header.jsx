@@ -6,7 +6,16 @@ import { Link, NavLink } from 'react-router-dom';
 const Header = ({ count, setCount }) => {
     const headerRef = useRef(null);
     const [width, setWidth] = useState(0);
+    const [scrollPosition, setScrollPosition] = useState(0);
 
+    useEffect(() => {
+        const updateDimensions = () => {
+            setScrollPosition(window.scrollY);
+        };
+        window.addEventListener('scroll', updateDimensions);
+        updateDimensions();
+        return () => window.removeEventListener('scroll', updateDimensions);
+    }, []);
     useEffect(() => {
         const updateWidth = () => {
             if (headerRef.current) {
@@ -22,7 +31,7 @@ const Header = ({ count, setCount }) => {
     }, []);
 
     return (
-        <div className='header p4' ref={headerRef}>
+        <div className='header p4' style={{backgroundColor: `${scrollPosition>=1? "#141414eb" : ""}`, transition: "background-color 0.5s ease"}} ref={headerRef}>
             <div className="h-logo">
                 <NavLink
                     to="/"

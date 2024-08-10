@@ -1,6 +1,49 @@
 import React from 'react'
 import "./questions.css"
+import Question from './question'
 const Questions = () => {
+    const question = [
+        {
+            id: 1,
+            a: "What is StreamVibe?",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+        {
+            id: 2,
+            a: "How much does StreamVibe cost?",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+        {
+            id: 3,
+            a: "What content is available on StreamVibe?",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+        {
+            id: 4,
+            a: "How can I watch StreamVibe?",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+        {
+            id: 5,
+            a: "How do I sign up for StreamVibe?",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+        {
+            id: 6,
+            a: "What is the StreamVibe free trial?",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+        {
+            id: 7,
+            a: "How do I contact StreamVibe customer support?",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+        {
+            id: 8,
+            a: "methods",
+            b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+        },
+    ]
     return (
         <div className='questions-container p4'>
             <div className="question-title">
@@ -8,59 +51,19 @@ const Questions = () => {
                 <p>Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.</p>
                 <button>Ask a Questions</button>
             </div>
-            <ul className="question-list">
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                          01
-                        </div>
-                        <h4>What is StreamVibe? </h4>
-                        <i className="fa-solid fa-plus"></i>
-                    </div>
-                    
-                </li>
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                         05
-                        </div>
-                        <h4>How do I sign up for StreamVibe?</h4>
-                        <i className="fa-solid fa-plus"></i>
-                    </div>
-                    
-                </li>
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                         02
-                        </div>
-                        <h4>How much does StreamVibe cost? </h4>
-                        <i className="fa-solid fa-plus"></i>
-                    </div>
-                </li>
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                         06
-                        </div>
-                        <h4>What is the StreamVibe free trial? </h4>
-                        <i className="fa-solid fa-plus"></i>
-                    </div>
-                    
-                </li>
-               
-             
-                <li className="question-item">
-                    <div className="question-top">
-                        <div className="question-icon">
-                         04
-                        </div>
-                        <h4>How can I watch StreamVibe? </h4>
-                        <i className="fa-solid fa-plus"></i>
-                    </div>
-                </li>
-              
-            </ul>
+            <div className="question-list">
+                <ul className="question-left">
+                    {question.slice(0, 4).map((item) => (
+                        <Question item={item} key={item.id} />
+                    ))}
+                </ul>
+                <ul className="question-right">
+                {question.slice(4, 8).map((item) => (
+                        <Question item={item} key={item.id} />
+                    ))}
+                </ul>
+
+            </div>
         </div>
     )
 }

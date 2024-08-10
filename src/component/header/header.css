@@ -22,7 +22,6 @@
     background-color: black;
     border-radius: 10px;
     border: 3px solid #2e2f2f;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,6 +78,7 @@
     position: fixed;
     width: 100%;
     z-index: 999999;
+    background-color: #141414;
 }
 
 .hMobile {
@@ -87,6 +87,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .h-burger {

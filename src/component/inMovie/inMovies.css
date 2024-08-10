@@ -1,9 +1,8 @@
 .inMovie{
-  padding: 150px 5% 0 5%;
+  padding: 130px 5% 0 5%;
 }
 .inMovies-text{
     max-width: 100%;
-    min-height: 700px;
     display: flex;
     justify-content: space-between;
     margin-top: 100px;
@@ -12,7 +11,7 @@
     max-width: 1060px;
     padding: 40px;
     min-height: 200px;
-    background-color: #141414;
+    background-color: #191919;
     border-radius: 20px;
 }
 .inMovie-desc>h4{
@@ -27,7 +26,7 @@
     width: 100%;
     min-width: 300px;
     min-height: 550px;
-    background-color: #141414;
+    background-color: #191919;
     border-radius: 20px;
     margin-left: 20px;
     color: white;
@@ -44,7 +43,7 @@
     padding: 40px;
     min-height: 300px;
     margin-top: 20px;
-    background-color: #141414;
+    background-color: #191919;
     border-radius: 20px;
 }
 .actors-list{
@@ -101,7 +100,7 @@
     width: 100%;
     min-height: 400px;
     margin-top: 20px;
-    background-color: #141414;
+    background-color: #191919;
     border-radius: 20px;
     padding: 40px;
 }

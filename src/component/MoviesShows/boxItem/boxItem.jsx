@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./boxItem.css"
 import { Link } from 'react-router-dom';
-const BoxItem = ({ baza, width }) => {
+const BoxItem = ({ baza, width, minWidth2 }) => {
     const inMovieBox = useRef(null);
     const key = "46ec25609ba3e9b8903dc225769a8f80";
     const [data, setData] = useState([]);
@@ -38,20 +38,6 @@ const BoxItem = ({ baza, width }) => {
     useEffect(() => {
         fetchData();
     }, []);
-    const selectWidth = (width - 55) / 100
-    const reviewsWidth = (selectWidth * 90) / 5
-    const reviewsWidth2 = (selectWidth * 90) / 4
-    const reviewsWidth3 = (selectWidth * 90) / 3
-    const reviewsWidth4 = (selectWidth * 90) / 2
-
-    const getMinWidth = () => {
-        if (width >= 1600) return `${reviewsWidth}px`;
-        if (width <= 1600 && width >= 1560) return `${reviewsWidth}px`;
-        if (width <= 1560 && width >= 1000) return `${reviewsWidth}px`;
-        if (width <= 1000 && width >= 770) return `${reviewsWidth2}px`
-        if (width <= 770 && width >= 550) return `${reviewsWidth3}px`
-        return `${reviewsWidth4}px`;
-    };
 
     const formatTitle = (title) => {
         let formattedTitle = title.replace(/[^\w\s]/g, '-');
@@ -65,7 +51,7 @@ const BoxItem = ({ baza, width }) => {
         <>
             <div className='BoxItem'>
                 <div className="moviesTitle">
-                    <h4>Popular Top 10 In Genres</h4>
+                    <h1>Popular Top 10 In Genres</h1>
                     {width >= 771 ? <><div className="dots-movie">
                         <button className="dots-inc" onClick={() => {
                             setNumber(number - 1)
@@ -80,16 +66,16 @@ const BoxItem = ({ baza, width }) => {
                 <div className="categoryList-box">
                     <ul className="category-list">
                         {data.length >= 1 ? data.map((genre, index) => (
-                            <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: getMinWidth() }}>
+                            <li className='category-item' key={index+1} style={{ transform: `translateX(-${(number - 1) * 100}% )`, minWidth: minWidth2 }}>
                                 <div className="category-items">
                                     <Link to={`/movies/${formatTitle(genre.name)}`}>
                                         <div className='category-imgs'>
                                             {baza.filter(movie => movie.genre_ids.includes(genre.id))
-                                                .slice(0, 4).map((movie) => (
+                                                .slice(0, 4).map((movie, index) => (
                                                 <img
                                                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                                                     alt={movie.title}
-                                                    key={movie.id}
+                                                    key={index+1}
                                                 />
                                             ))}
                                             <p>{genre.name} <i className="fa-solid fa-arrow-right"></i></p>
@@ -99,7 +85,7 @@ const BoxItem = ({ baza, width }) => {
                             </li>
                         )) : <>
                             {[1, 2, 3, 4, 5].map((item, index) => (
-                                <div className="load" key={index + 1} style={{ minWidth: getMinWidth() }}>
+                                <div className="load" key={index + 1} style={{ minWidth: minWidth2 }}>
                                     <div className="wrapper">
                                         <div className="cir"></div>
 

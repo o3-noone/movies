@@ -17,7 +17,7 @@ const Movies = ({ data, width }) => {
     generateRandomNumber();
   }, [data.length]);
 
-  const selectData = randomNumber !== null ? data.slice(Math.max(randomNumber - 4, 0), randomNumber) : [];
+  const selectData = randomNumber !== null ? data.slice(Math.max(randomNumber - 5, 0), randomNumber) : [];
 
   const handlePrev = () => {
     setCount(prev => (prev - 1 + selectData.length) % selectData.length);
@@ -33,7 +33,7 @@ const Movies = ({ data, width }) => {
       <div className="movies-hero">
         <div className="movies-list">
           {selectData.length >= 1 ? selectData.map((item) => (
-            <MoviesItem key={item.id} item={item} count={count} />
+            <MoviesItem key={item.id} width={width} item={item} count={count} />
           )) : (
             <div className="load">
               <div className="wrapper">
@@ -43,7 +43,7 @@ const Movies = ({ data, width }) => {
             </div>
           )}
         </div>
-        <div className="movie-inc-dec">
+       {width<=790? <></>:  <div className="movie-inc-dec">
           <div className="movie-inc" onClick={handlePrev}>
             <i className="fa-solid fa-arrow-left"></i>
           </div>
@@ -59,7 +59,7 @@ const Movies = ({ data, width }) => {
           <div className="movie-inc" onClick={handleNext}>
             <i className='fa-solid fa-arrow-right'></i>
           </div>
-        </div>
+        </div>}
       </div>
       <MoviesBox width={width} baza={data} />
     </div>

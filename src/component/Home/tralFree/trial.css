@@ -9,6 +9,7 @@
     background-image: url("./bg.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     border: 1px solid #393939;

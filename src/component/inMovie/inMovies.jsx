@@ -126,7 +126,7 @@ const InMovies = ({ item, width, listItem }) => {
                         </li>
                     </ul>
                 </div>
-                <Trailer item={item} add={add} like={like} music={music} setAdd={setAdd} setLike={setLike} setMusic={setMusic} setShowTrailer={setShowTrailer} showTrailer={showTrailer} trailer={trailer} />
+                <Trailer width={width} item={item} add={add} like={like} music={music} setAdd={setAdd} setLike={setLike} setMusic={setMusic} setShowTrailer={setShowTrailer} showTrailer={showTrailer} trailer={trailer} />
                 <div className="inMovies-text">
                     <div className="inMovise-left">
                         <InMovieDeck item={item} width={width} selectWidth={selectWidth} />

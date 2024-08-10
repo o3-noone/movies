@@ -16,9 +16,6 @@
         max-width: 500px;
         width: 100%;
     }
-    .genres-list {
-        grid-template-columns: repeat(6, auto);
-    }
 
 }
 
@@ -40,50 +37,47 @@
         max-width: 500px;
         width: 100%;
     }
-    .genres-list {
-        grid-template-columns: repeat(6, auto);
-    }
 
 }
-@media (min-width: 1300px) and (max-width: 1560px) {
+
+/* @media (max-width: 1560px) {
     .genres-list {
         grid-template-columns: repeat(5, auto);
     }
-}
-@media (min-width: 1000px) and (max-width: 1300px) {
+} */
+/* @media (max-width: 1300px) {
     .genres-list {
         grid-template-columns: repeat(4, auto);
     }
 }
 
-@media (min-width: 550px) and (max-width: 1000px) {
+@media (max-width: 1000px) {
     .genres-list {
         grid-template-columns: repeat(3, auto);
     }
-}
+} */
 @media (max-width: 1560px) {
     /* home respone */
 
     .question-item {
         max-width: 600px;
     }
-.inMovie-desc, .inMovie-cast, .inMovie-reviews{
-    max-width: 900px;
-    min-width: 900px;
-    margin-left: 0;
 
-}
+    .inMovie-desc,
+    .inMovie-cast,
+    .inMovie-reviews {
+        max-width: 900px;
+        min-width: 900px;
+        margin-left: 0;
 
-}
-
-@media (max-width: 1300px) {
-    .genres-list{
-        grid-template-columns: auto auto auto auto auto;
     }
+
 }
+
+
 @media (max-width: 1391px) {
     /* home respone */
- 
+
     .question-item {
         max-width: 550px;
     }
@@ -100,7 +94,8 @@
     .device-list {
         grid-template-columns: auto auto;
     }
-    .inMovie-info{
+
+    .inMovie-info {
         max-width: 900px;
     }
 }
@@ -109,12 +104,15 @@
 @media (max-width: 1255px) {
     /* home respone */
 
-    .inMovie-desc, .inMovie-cast, .inMovie-reviews{
+    .inMovie-desc,
+    .inMovie-cast,
+    .inMovie-reviews {
         max-width: 200px;
         margin-left: 0;
-    
-    
+
+
     }
+
     .bg-img {
         width: 140px;
     }
@@ -148,7 +146,7 @@
     }
 
     .question-list {
-        grid-template-columns: auto;
+        flex-wrap: wrap;
     }
 
     .question-item {
@@ -185,15 +183,13 @@
 
     .question-item {
         max-width: 700px;
-        width: 700px;
+        width: 100%;
     }
 
     .question-top>p {
         width: 100%;
     }
-    .movie-text>p{
-        display: none;
-    }
+
 
 }
 
@@ -247,21 +243,29 @@
     .trial>button {
         margin-top: 10px;
     }
-    .dots{
+
+    .dots {
         margin-left: 0;
-    }
-    .movies-item{
-        height: 500px;
-        background-size: contain;
-    }
-    .movies-title{
-        min-height: 500px;
     }
 
 }
 
 @media (max-width: 786px) {
+
     /* home respone */
+    .movie-play {
+        padding: 10px 15px;
+    }
+
+    .movie-text>h3 {
+        font-size: 27px;
+    }
+
+    .movie-btn {
+        min-width: 35px;
+        max-width: 35px;
+        height: 35px;
+    }
 
     .question-top>h4 {
         width: 300px;
@@ -276,13 +280,37 @@
         gap: 20px;
     }
 
+    .category-list {
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .dots2, .dots {
+        display: none;
+    }
+    
+    .dots-inc2,
+    .dots-inc3 {
+        display: none;
+    }
+    .dots-movie{
+        display: none;
+    }
 }
 
-@media (max-width: 550px) {
-    /* home respone */
+
+/* @media (max-width: 611px) {
     .genres-list {
         grid-template-columns: repeat(2, auto);
     }
+} */
+@media (max-width: 551px) {
+
+    /* home respone */
+    .movie-text>h3 {
+        font-size: 20px;
+    }
+
     .btn-sub {
         width: 140px;
         max-width: 140px;
@@ -291,6 +319,14 @@
     .question-top>h4 {
         width: 200px;
         min-width: 200px;
+    }
+
+    .genres-film {
+        font-size: 12px;
+    }
+
+    .genres-rating {
+        font-size: 12px;
     }
 
     .footerB {
@@ -308,33 +344,53 @@
         width: 100%;
         margin-top: 10px;
     }
-    .inMovie-infoMax{
+
+    .inMovie-infoMax {
         grid-template-columns: auto;
     }
-    .category-item{
+
+    .category-item {
         padding: 2px;
     }
 
+    .category-imgs {
+        padding: 5px;
+    }
+
+    .moviesBox {
+        padding: 0;
+        border: none;
+    }
+
+
 }
+
 @media (max-width: 500px) {
 
-    .inMovie-desc{
+    .inMovie-desc {
         min-height: 250px;
     }
-    .inMovie-reviews{
+
+    .inMovie-reviews {
         padding: 40px 10px;
     }
-    .filmView, .filmTime{
+
+    .filmView,
+    .filmTime {
         font-size: 12px;
     }
-    .dots-inc2, .dots-inc3{
+
+    .dots-inc2,
+    .dots-inc3 {
         width: 30px;
         height: 50px;
     }
-    .filmTimeCenter{
+
+    .filmTimeCenter {
         font-size: 12px;
     }
 }
+
 @media (max-width: 430px) {
     /* home respone */
 
@@ -374,4 +430,11 @@
         width: 100%;
     }
 
+    .genres-film {
+        font-size: 9px;
+    }
+
+    .genres-rating {
+        font-size: 11px;
+    }
 }
