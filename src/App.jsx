@@ -8,6 +8,8 @@ import HeaderMobile from './component/header/headerMobile';
 import InMovies from './component/inMovie/inMovies';
 import Genres from './component/MoviesShows/genres/genres';
 import Loading from './component/loading/loading';
+import Support from './component/Support/support';
+import Subscriptions from './component/Subscriptions/subscriptions';
 
 function App() {
   const key = "46ec25609ba3e9b8903dc225769a8f80";
@@ -131,6 +133,8 @@ function App() {
               return null;
             })
           ))}
+          <Route path="/support" element={<Support/>} />
+          <Route path="/subscriptions" element={<Subscriptions/>} />
           <Route path="*" element={<div>Page not found</div>} />
         </Routes>
       )}

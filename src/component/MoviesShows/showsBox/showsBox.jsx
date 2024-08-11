@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import "./moviesBox.css";
 import BoxItem from '../boxItem/boxItem';
 import OneItem from '../oneItem/oneItem';
 import New from '../new/new';
 import { Link } from 'react-router-dom';
 import MustMovie from '../must/mustMovie';
 
-const MoviesBox = ({ baza, width }) => {
+const ShowsBox = ({ baza, width }) => {
     const inMovieBox = useRef(null);
     const [divWidth, setDivWidth] = useState(0);
     const [data, setData] = useState([]);
@@ -72,8 +71,8 @@ const MoviesBox = ({ baza, width }) => {
 
     return (
         <>
-            <div className='moviesBox'>
-                <p className="title">Movies</p>
+            <div className='showsBox'>
+                <p className="title">Shows</p>
                 <div className="moviesTitle">
                     <h1>Our Genres</h1>
                     {width >= 771 ? (
@@ -147,4 +146,4 @@ const MoviesBox = ({ baza, width }) => {
     );
 }
 
-export default MoviesBox;
+export default ShowsBox;

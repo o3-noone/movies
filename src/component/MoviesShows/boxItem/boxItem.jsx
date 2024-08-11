@@ -17,7 +17,6 @@ const BoxItem = ({ baza, width, minWidth2 }) => {
             const result = await response.json();
             setData(result.genres.slice(0, 10));
         } catch (error) {
-            console.error('Error fetching data:', error);
         }
     };
     const getDataLength = () => {

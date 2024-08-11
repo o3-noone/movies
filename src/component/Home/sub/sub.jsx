@@ -3,6 +3,7 @@ import "./sub.css"
 const Sub = () => {
     const [sub, setSub] = useState(1)
     return (
+       <> 
         <div className='sub-container p4'>
             <div className="sub">
                 <div className="sub-title">
@@ -72,6 +73,7 @@ const Sub = () => {
                 </ul>
             </div>
         </div>
+       </>
     )
 }
 

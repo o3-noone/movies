@@ -189,7 +189,16 @@
     .question-top>p {
         width: 100%;
     }
-
+    .supportBox{
+        flex-direction: column;
+    }
+.supportInfo{
+    width: 100%;
+}
+.supportMessage{
+    width: 100%;
+    margin-top: 25px;
+}
 
 }
 
@@ -358,6 +367,10 @@
     }
 
     .moviesBox {
+        padding: 0;
+        border: none;
+    }
+    .showsBox {
         padding: 0;
         border: none;
     }

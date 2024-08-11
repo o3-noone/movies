@@ -2,9 +2,8 @@ import React from 'react';
 import "./loading.css";
 import logo from "./Logo.svg"
 const Loading = ({ dataLength }) => {
-    const maxDataLength = 1500;
-    const widthPercentage = (dataLength / maxDataLength) * 100;
-
+    const maxDataLength = 5000;
+    const widthPercentage = (dataLength / maxDataLength) * 300;
     return (
         <div className='loading'>
             <div className="loading-ind">
@@ -12,7 +11,7 @@ const Loading = ({ dataLength }) => {
                 <div className="indBox">
                     <span style={{ width: `${widthPercentage}%` }}></span>
                 </div>
-                Loading... {dataLength/100}%
+                Loading... {dataLength/20}%
             </div>
         </div>
     );

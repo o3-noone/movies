@@ -3,10 +3,12 @@ import "./movies.css";
 import MoviesItem from './moviesItem';
 import ScrolTop from '../scrolTop/scrolTop';
 import MoviesBox from './moviesBox/moviesBox';
+import ShowsBox from './showsBox/showsBox';
 
 const Movies = ({ data, width }) => {
   const [count, setCount] = useState(0);
   const [randomNumber, setRandomNumber] = useState(null);
+  const [shows, setShows] = useState(false)
   useEffect(() => {
     document.title = 'Movies & TV Shows';
   }, []);
@@ -45,7 +47,7 @@ const Movies = ({ data, width }) => {
             </div>
           )}
         </div>
-       {width<=790? <></>:  <div className="movie-inc-dec">
+        {width <= 790 ? <></> : <div className="movie-inc-dec">
           <div className="movie-inc" onClick={handlePrev}>
             <i className="fa-solid fa-arrow-left"></i>
           </div>
@@ -63,7 +65,44 @@ const Movies = ({ data, width }) => {
           </div>
         </div>}
       </div>
-      <MoviesBox width={width} baza={data} />
+      {width <= 790 ? (
+  <>
+    <div className="moviesShows">
+      <button 
+        className={`movies ${!shows ? "moviesAct" : ""}`} 
+        onClick={() => setShows(false)}
+      >
+        Movies
+      </button>
+      <button 
+        className={`movies ${shows ? "moviesAct" : ""}`} 
+        onClick={() => setShows(true)}
+      >
+        Shows
+      </button>
+    </div>
+  </>
+) : (
+  <></>
+)}
+
+      {width <= 790 && (
+        <>
+          {!shows ? (
+            <MoviesBox width={width} baza={data} />
+          ) : (
+            <ShowsBox width={width} baza={data} />
+          )}
+        </>
+      )}
+
+
+      {width <= 790 ? <></> : <>
+
+        <MoviesBox width={width} baza={data} />
+        <ShowsBox width={width} baza={data} />
+      </>}
+
     </div>
   );
 }

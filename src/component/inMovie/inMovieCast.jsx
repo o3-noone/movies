@@ -77,6 +77,7 @@ const InMovieCast = ({ width, actors }) => {
                             alt={actor.name}
                             className="actor-image"
                         />
+                        <p style={{color: "white"}}>{actor.name.slice(0, 7)}...</p>
                     </div>
                 )) : <>
                 

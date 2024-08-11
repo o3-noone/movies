@@ -33,7 +33,6 @@ const MustMovie = ({ width, number, setNumber, baza, minWidth2 }) => {
 
     return (
         <div className='mustMovie'>
-            <p className="title">Movies</p>
             <div className="moviesTitle">
                 <h1>Must - Watch Movies</h1>
                 {width >= 771 ? (

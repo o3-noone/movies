@@ -40,7 +40,7 @@ const Questions = () => {
         },
         {
             id: 8,
-            a: "methods",
+            a: "What are the StreamVibe payment methods?",
             b: "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
         },
     ]

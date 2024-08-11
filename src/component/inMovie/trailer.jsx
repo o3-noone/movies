@@ -55,7 +55,8 @@ const Trailer = ({ setAdd,width, setLike, setMusic, setShowTrailer, item, traile
                     className="movies-item"
 
                 >
-                    {trailer && (
+                    
+                    {trailer ? (
                         <iframe
                             width="100%"
                             height="100%"
@@ -65,12 +66,19 @@ const Trailer = ({ setAdd,width, setLike, setMusic, setShowTrailer, item, traile
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         ></iframe>
-                    )}
+                    ) : <>
+                    <span className='moviesBaner'><img src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} alt={item.title} /></span>
+                    
+                    </>}
 
                     <div className="movies-title2" >
                         <div className="movies-box" >
                             <div className="movie-text">
                                 {showTrailer? <></>:<h3>{item.title}</h3>}
+                                {trailer ? <></> : <>
+                                    <h3> '{item.title}' <span style={{color: "red"}}>film's trailer not found</span></h3> 
+                                
+                                </>}
                             </div>
                             <div  className={`movie-btns`}>
                                 <button
