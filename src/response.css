@@ -313,6 +313,27 @@
         grid-template-columns: repeat(2, auto);
     }
 } */
+@media (max-width: 570px) {
+    .messageInputs{
+        flex-direction:column-reverse;
+    }
+    .messageInputs:last-child{
+        flex-direction: column;
+    }
+    .inputs{
+        width: 100%;
+    }
+    .inputs>input{
+        margin-bottom: 10px;
+    }
+    .checkbox{
+        width: 100%;
+    }
+
+    .sendBtn{
+        width: 100%;
+    }
+}
 @media (max-width: 551px) {
 
     /* home respone */
