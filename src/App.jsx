@@ -19,7 +19,7 @@ function App() {
   const [count, setCount] = useState(1);
   const [width, setWidth] = useState(window.innerWidth);
   const headerRef = useRef(null);
-
+const [allData, setAllData]=useState([])
   const fetchData = async () => {
     try {
       const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
@@ -49,6 +49,25 @@ function App() {
         }
         setData(combinedResults);
         
+      } catch (error) {
+      }
+    };
+
+    fetchMovies();
+  }, [key]);
+  useEffect(() => {
+    const fetchMovies = async () => {
+      let combinedResults = [];
+
+      try {
+        for (let page = 1; page <= 100; page++) {
+          const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`);
+          const data = await response.json();
+          combinedResults = [...combinedResults, ...data.results];
+          await new Promise(resolve => setTimeout(resolve));
+          
+        }
+        setAllData(combinedResults)
       } catch (error) {
       }
     };
@@ -105,7 +124,7 @@ function App() {
               />
             );
           })}
-          {data.map((item, index) => (
+          {allData && allData.map((item, index) => (
             list.map((listItem, listIndex) => {
               if (item.genre_ids.includes(listItem.id)) {
                 return (
@@ -119,7 +138,7 @@ function App() {
               return null;
             })
           ))}
-             {data.map((item, index) => (
+             {allData && allData.map((item, index) => (
             list.map((listItem, listIndex) => {
               if (item.genre_ids.includes(listItem.id)) {
                 return (
