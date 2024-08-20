@@ -7,6 +7,7 @@ const Subscriptions = () => {
   return (
     <>
       <div className="subscriptions">
+        <ScrolTop/>
         <Sub />
         <Trial/>
       </div>
