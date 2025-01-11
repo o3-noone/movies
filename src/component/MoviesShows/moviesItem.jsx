@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import imgDef from "./1.png"
 const MoviesItem = ({ item, count, width }) => {
     const [add, setAdd] = useState(false);
     const [like, setLike] = useState(false);
@@ -23,7 +23,7 @@ const MoviesItem = ({ item, count, width }) => {
                     }}
                     className='movies-item'
                 >
-                   <span className='moviesBaner'><img src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} alt={item.title} /></span>
+                   <span className='moviesBaner'><img src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} onError={(e) => e.target.src = imgDef} alt={item.title} /></span>
                    <div className="movies-title">
                         <div className="movies-box">
                             <div className="movie-text">
@@ -64,7 +64,6 @@ const MoviesItem = ({ item, count, width }) => {
                     <div className="load" key={index + 1} style={{ minWidth: getMinWidth() }}>
                         <div className="wrapper">
                             <div className="cir"></div>
-
                             <div className="line-4"></div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './hero.css';
 import icon from './icon.svg';
+import imgDef from "./loading.png"
 import { useNavigate } from 'react-router-dom';
 const Img = ({item}) =>{
   const img = `https://image.tmdb.org/t/p/w500${item.backdrop_path}`
@@ -11,6 +12,7 @@ const Img = ({item}) =>{
               className='bg-img'
               src={img}
               alt={item.title}
+              onError={(e) => e.target.src = icon}
             />
     </>
   )
@@ -45,7 +47,8 @@ const Hero = ({ data, setCount }) => {
         )}
         <div className="hero">
           <div className="hero-img">
-            <img src={icon} alt="icon" />
+            <img src={icon}                                               
+             alt="icon" />
           </div>
         </div>
       </div>

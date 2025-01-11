@@ -3,7 +3,9 @@ import "./loading.css";
 import logo from "./Logo.svg"
 const Loading = ({ dataLength }) => {
     const maxDataLength = 5000;
-    const widthPercentage = (dataLength / maxDataLength) * 300;
+    const widthPercentage = (dataLength / maxDataLength) * 250;
+    console.log(dataLength);
+    
     return (
         <div className='loading'>
             <div className="loading-ind">

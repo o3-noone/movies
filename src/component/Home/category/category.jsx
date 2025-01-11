@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import "./category.css";
 import { Link } from 'react-router-dom';
-
+import imgDef from "./loading.png"
 const Category = ({ baza, width }) => {
     const key = "46ec25609ba3e9b8903dc225769a8f80";
     const [data, setData] = useState([]);
@@ -121,6 +121,7 @@ const Category = ({ baza, width }) => {
                                                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                                     alt={movie.title}
                                                     key={index + 1}
+                                                    onError={(e) => e.target.src = imgDef}
                                                 />
                                             ))
                                         }

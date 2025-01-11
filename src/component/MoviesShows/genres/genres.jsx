@@ -43,6 +43,11 @@ const Genres = ({ item, data, width }) => {
             setHeight(listHeight.current.clientHeight);
         }
     }, [filteredData]);
+    // useEffect(() => {
+    //     if (page === 0 || page === -1) {
+    //         setPage(1);
+    //     }
+    // }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -51,7 +56,7 @@ const Genres = ({ item, data, width }) => {
                 setPage((prevPage) => prevPage + 1);
             }
         };
-        
+
         // Adding a throttle to prevent excessive scroll event triggers
         const throttleScroll = () => {
             if (!handleScroll.throttled) {
@@ -92,11 +97,10 @@ const Genres = ({ item, data, width }) => {
                     </div>
                     <div className="genres-listBox" ref={inGenresRef}>
                         <div className="genres-pages">
-                            <button onClick={() => setPage(page - 1)}>-</button>
+                            <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))}>-</button>
                             <input
                                 type="number"
                                 value={page}
-                                onChange={(e) => handlePageChange(Number(e.target.value))}
                             />
                             <button onClick={() => setPage(page + 1)}>+</button>
                         </div>
